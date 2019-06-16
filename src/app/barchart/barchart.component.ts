@@ -3,9 +3,9 @@ import { INITIAL_DATA, X_LABELS } from '../data/sorting';
 import * as Highcharts from 'highcharts';
 
 declare var require: any;
-let Boost = require('highcharts/modules/boost');
-let noData = require('highcharts/modules/no-data-to-display');
-let More = require('highcharts/highcharts-more');
+const Boost = require('highcharts/modules/boost');
+const noData = require('highcharts/modules/no-data-to-display');
+const More = require('highcharts/highcharts-more');
 
 Boost(Highcharts);
 noData(Highcharts);
@@ -18,7 +18,13 @@ noData(Highcharts);
   styleUrls: ['./barchart.component.sass']
 })
 export class BarchartComponent implements OnInit, AfterViewInit {
+  /**
+   * Holds the data for the current state of the application
+   */
   private data: any;
+  /**
+   * Chart options
+   */
   private chartOptions: any = {
     title: {
       text: 'Algorithm Benchmarks'
@@ -45,10 +51,13 @@ export class BarchartComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.makeGraphs();
+    this.createChart();
   }
 
-  makeGraphs() {
+  /**
+   * Creates the chart on the HTML canvas with id container
+   */
+  private createChart() {
     Highcharts.chart('container', {
       ...this.chartOptions,
       xAxis: {

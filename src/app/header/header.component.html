@@ -14,10 +14,10 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" routerLinkActive="active" routerLink="/chart"
-        >Benchmarks <span class="sr-only">(current)</span></a
+        >Benchmarks <span *ngIf="isActiveRoute('/chart')" class="sr-only">(current)</span></a
       >
       <a class="nav-item nav-link" routerLinkActive="active" routerLink="/setup"
-        >Setup <span class="sr-only">(current)</span></a
+        >Setup <span *ngIf="isActiveRoute('/setup')" class="sr-only">(current)</span></a
       >
     </div>
   </div>
