@@ -15,7 +15,7 @@ noData(Highcharts);
 @Component({
   selector: 'app-barchart',
   templateUrl: './barchart.component.html',
-  styleUrls: ['./barchart.component.sass']
+  styleUrls: ['./barchart.component.scss']
 })
 export class BarchartComponent implements OnInit, AfterViewInit {
   /**
