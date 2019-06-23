@@ -1,5 +1,7 @@
 # Algorithm Benchmarks
 
+[![Build Status](https://travis-ci.com/Narshe1412/Code-Institute-User-Centric-Algorithms.svg?branch=master)](https://travis-ci.com/Narshe1412/Code-Institute-User-Centric-Algorithms)
+
 As a programmer you need to always leverage between several possible different solutions the one that would be most efficient. One common problem is the sorting, inserting or accessing data. To solve this problem, along programming history, several algorithms have been created. This project attempts to help a fellow programmer to choose which algorithm shall be used by providing a benchmarking operationg and plotting the results in a variety of graphs.
 
 ## UX
@@ -20,24 +22,23 @@ It is also expected that the website will be desktop-first, as the main audience
 
 ### Wireframes
 
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
+Basic Wireframe Setup for Mobile view and Desktop View
+![Desktop first design](docs/img/desktop.png 'Desktop design')
+![Mobile design](docs/img/mobile.png 'Mobile design')
 
 ## Features
 
-In this section, you should go over the different parts of your project, and describe each in a sentence or so.
-
 ### Existing Features
 
-- Feature 1 - allows users X to achieve Y, by having them fill out Z
-- ...
+- Benchmark Statistics: Plot the statistics of previous runs in charts so it's easy to compare between different algorithm results.
+- Run Algorithms: Allow the user to run different algorithms in their own computer in order to obtain more realistic benchmarks.
+- Setup: Allow the user to change the settings of specific portions of the application like colours, the type of graphs, etc...
 
-For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
+### Features For Future Revisions of the Project
 
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
-
-### Features Left to Implement
-
-- Another feature idea
+- Other type of algorithms (accessors, indexing, data structures, etc...)
+- Option to run the algorithms out of the browser using the full capabilities of the computer's processors.
+- Option to run algorithms in a VM on a cloud provider, to obtain a best-case computer setups.
 
 ## Technologies Used
 
@@ -103,3 +104,4 @@ In addition, if it is not obvious, you should also describe how to run your code
 - Algorithm Implementations: https://khan4019.github.io/front-end-Interview-Questions/sort.html
 - https://dev.to/wangonya/sorting-algorithms-with-javascript-part-1-4aca
 - https://dev.to/wangonya/sorting-algorithms-with-javascript-part-2-3g51
+- http://bigocheatsheet.com/
