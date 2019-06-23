@@ -1,0 +1,29 @@
+dist: trusty
+sudo: false
+
+language: node_js
+node_js:
+  - '10'
+
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+  sonarcloud:
+    organization: 'narshe1412-github' # the key of the org you chose at step #3
+    # token:
+    #   secure: SONAR_TOKEN # encrypted value of your token
+
+cache:
+  directories:
+    - ./node_modules
+
+install:
+  - npm install
+
+script:
+  # - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+  - npm run cibuild
+  - sonar-scanner
