@@ -24,20 +24,17 @@ This section is also where you would share links to any wireframes, mockups, dia
 
 ## Features
 
-In this section, you should go over the different parts of your project, and describe each in a sentence or so.
-
 ### Existing Features
 
-- Feature 1 - allows users X to achieve Y, by having them fill out Z
-- ...
+- Benchmark Statistics: Plot the statistics of previous runs in charts so it's easy to compare between different algorithm results.
+- Run Algorithms: Allow the user to run different algorithms in their own computer in order to obtain more realistic benchmarks.
+- Setup: Allow the user to change the settings of specific portions of the application like colours, the type of graphs, etc...
 
-For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
+### Features For Future Revisions of the Project
 
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
-
-### Features Left to Implement
-
-- Another feature idea
+- Other type of algorithms (accessors, indexing, data structures, etc...)
+- Option to run the algorithms out of the browser using the full capabilities of the computer's processors.
+- Option to run algorithms in a VM on a cloud provider, to obtain a best-case computer setups.
 
 ## Technologies Used
 
