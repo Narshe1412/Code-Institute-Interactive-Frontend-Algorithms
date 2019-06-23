@@ -1,5 +1,7 @@
 # Algorithm Benchmarks
 
+[![Build Status](https://travis-ci.com/Narshe1412/Code-Institute-User-Centric-Algorithms.svg?branch=master)](https://travis-ci.com/Narshe1412/Code-Institute-User-Centric-Algorithms)
+
 As a programmer you need to always leverage between several possible different solutions the one that would be most efficient. One common problem is the sorting, inserting or accessing data. To solve this problem, along programming history, several algorithms have been created. This project attempts to help a fellow programmer to choose which algorithm shall be used by providing a benchmarking operationg and plotting the results in a variety of graphs.
 
 ## UX
@@ -20,7 +22,9 @@ It is also expected that the website will be desktop-first, as the main audience
 
 ### Wireframes
 
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
+Basic Wireframe Setup for Mobile view and Desktop View
+![Desktop first design](docs/img/desktop.png 'Desktop design')
+![Mobile design](docs/img/mobile.png 'Mobile design')
 
 ## Features
 
@@ -100,3 +104,4 @@ In addition, if it is not obvious, you should also describe how to run your code
 - Algorithm Implementations: https://khan4019.github.io/front-end-Interview-Questions/sort.html
 - https://dev.to/wangonya/sorting-algorithms-with-javascript-part-1-4aca
 - https://dev.to/wangonya/sorting-algorithms-with-javascript-part-2-3g51
+- http://bigocheatsheet.com/
