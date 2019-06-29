@@ -105,3 +105,7 @@ In addition, if it is not obvious, you should also describe how to run your code
 - https://dev.to/wangonya/sorting-algorithms-with-javascript-part-1-4aca
 - https://dev.to/wangonya/sorting-algorithms-with-javascript-part-2-3g51
 - http://bigocheatsheet.com/
+- https://www.w3resource.com/javascript-exercises/searching-and-sorting-algorithm/searching-and-sorting-algorithm-exercise-6.php
+- https://github.com/arnorhs/js-introsort
+- https://stackoverflow.com/a/52236574/5866637
+- https://github.com/LXSMNSYC/TimSort
