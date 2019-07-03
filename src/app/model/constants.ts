@@ -1,4 +1,76 @@
+import { IDataSeries } from '../model/IDataSeries';
+import { bubbleSort } from '../services/algorithm-implementations/bubble-sort';
+import { heapSort } from '../services/algorithm-implementations/heap-sort';
+import { insertionSort } from '../services/algorithm-implementations/insertion-sort';
+import { introsort } from '../services/algorithm-implementations/introsort';
+import { mergeSort } from '../services/algorithm-implementations/merge-sort';
+import { quickSort } from '../services/algorithm-implementations/quicksort';
+import { radixSort } from '../services/algorithm-implementations/radix-sort';
+import { selectionSort } from '../services/algorithm-implementations/selection-sort';
+import { shellSort } from '../services/algorithm-implementations/shell-sort';
+import { timsort } from '../services/algorithm-implementations/timsort';
+import { jsSort } from '../services/algorithm-implementations/js-sort';
+
 export const RUN_SIZE: number[] = [100, 250, 500, 750, 1000, 1250, 2500, 3750, 5000, 6250, 7500, 8750, 10000];
+export const DEFAULT_REPETITIONS = 3;
+
+export const ALGORITHM_LIST = [
+  {
+    name: 'Bubble Sort',
+    description: 'Bubbles a sorting',
+    fn: bubbleSort
+  },
+  {
+    name: 'Heap Sort',
+    description: 'heapify a sorting',
+    fn: heapSort
+  },
+  {
+    name: 'Insertion Sort',
+    description: 'Insert all the things in a sorting',
+    fn: insertionSort
+  },
+  {
+    name: 'Introsort',
+    description: 'not sure what this does',
+    fn: introsort
+  },
+  {
+    name: 'Merge Sort',
+    description: 'Merges a sorting',
+    fn: mergeSort
+  },
+  {
+    name: 'Quick Sort',
+    description: 'This supposed to be quick',
+    fn: quickSort
+  },
+  {
+    name: 'Radix Sort',
+    description: 'Nothing to do with botany',
+    fn: radixSort
+  },
+  {
+    name: 'Selection Sort',
+    description: 'Selects a sorting',
+    fn: selectionSort
+  },
+  {
+    name: 'Shell Sort',
+    description: 'Heroes in a hard shell, turtle power',
+    fn: shellSort
+  },
+  {
+    name: 'Tim Sort',
+    description: 'TIMMEH!',
+    fn: timsort
+  },
+  {
+    name: 'Javascript Sort',
+    description: 'The default sort from javascript',
+    fn: jsSort
+  }
+];
 
 /**
  * Chart options
@@ -21,8 +93,6 @@ export const DEFAULT_CHART_OPTIONS: any = {
     }
   }
 };
-
-import { IDataSeries } from '../model/IDataSeries';
 
 export const INITIAL_DATA: IDataSeries[] = [
   {

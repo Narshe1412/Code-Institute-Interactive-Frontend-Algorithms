@@ -11,6 +11,7 @@ import { shellSort } from './algorithm-implementations/shell-sort';
 import { introsort } from './algorithm-implementations/introsort';
 import { timsort } from './algorithm-implementations/timsort';
 import { radixSort } from './algorithm-implementations/radix-sort';
+import { jsSort } from './algorithm-implementations/js-sort';
 
 describe('AlgorithmRunnerService', () => {
   let service: AlgorithmRunnerService;
@@ -24,233 +25,49 @@ describe('AlgorithmRunnerService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('bubblesort', () => {
-    it('should return an ordered array', () => {
-      const initial = [3, 0, 7, -1, 19, 1000, 33, 1];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(bubbleSort, initial);
-      expect(expected).toEqual(actual);
+  describe('generate default arrays', () => {
+    it('should create an array of N elements', () => {
+      const { BC } = service.generateDefaultArrays(10);
+      const expected = 10;
+      expect(expected).toEqual(BC.length);
     });
 
-    it('should return empty array if passed empty array', () => {
-      const initial = [];
-      const expected = [];
-      const actual = service.runAlgorithm(bubbleSort, initial);
-      expect(expected).toEqual(actual);
+    it('Best case array should contain N elements in order', () => {
+      const { BC } = service.generateDefaultArrays(12);
+      const expected = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+      expect(expected).toEqual(BC);
     });
 
-    it('should return the same array if passed a sorted array', () => {
-      const initial = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(bubbleSort, initial);
-      expect(expected).toEqual(actual);
-    });
-  });
-
-  describe('introsort', () => {
-    it('should return an ordered array', () => {
-      const initial = [3, 0, 7, -1, 19, 1000, 33, 1];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(introsort, initial);
-      expect(expected).toEqual(actual);
+    it('Worst case array should be a reversed array of N elements', () => {
+      const { WC } = service.generateDefaultArrays(9);
+      const expected = [8, 7, 6, 5, 4, 3, 2, 1, 0];
+      expect(expected).toEqual(WC);
     });
 
-    it('should return empty array if passed empty array', () => {
-      const initial = [];
-      const expected = [];
-      const actual = service.runAlgorithm(introsort, initial);
-      expect(expected).toEqual(actual);
-    });
+    it('random array should be an array of N elements in random order', () => {
+      const { Rnd } = service.generateDefaultArrays(8);
+      const BEST_CASE = [0, 1, 2, 3, 4, 5, 6, 7];
+      const WORST_CASE = [7, 6, 5, 4, 3, 2, 1, 0];
+      expect(Rnd).not.toEqual(BEST_CASE);
+      expect(Rnd).not.toEqual(WORST_CASE);
 
-    it('should return the same array if passed a sorted array', () => {
-      const initial = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(introsort, initial);
+      const expected = new Set(BEST_CASE);
+      const actual = new Set(Rnd);
       expect(expected).toEqual(actual);
     });
   });
 
-  describe('selection sort', () => {
-    it('should return an ordered array', () => {
-      const initial = [3, 0, 7, -1, 19, 1000, 33, 1];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(selectionSort, initial);
-      expect(expected).toEqual(actual);
-    });
+  describe('algorithm runner', () => {
+    it('should run the correct amount of times', () => {
+      const spy = spyOn(service, 'runAlgorithm').and.callThrough();
+      const algorithmList = [bubbleSort, jsSort];
+      const repetitions = 4;
+      const simulationList = [10, 100, 10000];
 
-    it('should return empty array if passed empty array', () => {
-      const initial = [];
-      const expected = [];
-      const actual = service.runAlgorithm(selectionSort, initial);
-      expect(expected).toEqual(actual);
-    });
+      service.runBenchmark(algorithmList, simulationList, repetitions);
 
-    it('should return the same array if passed a sorted array', () => {
-      const initial = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(selectionSort, initial);
-      expect(expected).toEqual(actual);
-    });
-  });
-
-  describe('radix sort', () => {
-    it('should return an ordered array', () => {
-      const initial = [3, 0, 7, -1, 19, 1000, 33, 1];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(radixSort, initial);
-      expect(expected).toEqual(actual);
-    });
-
-    it('should return empty array if passed empty array', () => {
-      const initial = [];
-      const expected = [];
-      const actual = service.runAlgorithm(radixSort, initial);
-      expect(expected).toEqual(actual);
-    });
-
-    it('should return the same array if passed a sorted array', () => {
-      const initial = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(radixSort, initial);
-      expect(expected).toEqual(actual);
-    });
-  });
-
-  describe('Timsort', () => {
-    it('should return an ordered array', () => {
-      const initial = [3, 0, 7, -1, 19, 1000, 33, 1];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(timsort, initial);
-      expect(expected).toEqual(actual);
-    });
-
-    it('should return empty array if passed empty array', () => {
-      const initial = [];
-      const expected = [];
-      const actual = service.runAlgorithm(timsort, initial);
-      expect(expected).toEqual(actual);
-    });
-
-    it('should return the same array if passed a sorted array', () => {
-      const initial = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(timsort, initial);
-      expect(expected).toEqual(actual);
-    });
-  });
-
-  describe('insertion sort', () => {
-    it('should return an ordered array', () => {
-      const initial = [3, 0, 7, -1, 19, 1000, 33, 1];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(insertionSort, initial);
-      expect(expected).toEqual(actual);
-    });
-
-    it('should return empty array if passed empty array', () => {
-      const initial = [];
-      const expected = [];
-      const actual = service.runAlgorithm(insertionSort, initial);
-      expect(expected).toEqual(actual);
-    });
-
-    it('should return the same array if passed a sorted array', () => {
-      const initial = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(insertionSort, initial);
-      expect(expected).toEqual(actual);
-    });
-  });
-
-  describe('merge sort', () => {
-    it('should return an ordered array', () => {
-      const initial = [3, 0, 7, -1, 19, 1000, 33, 1];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(mergeSort, initial);
-      expect(expected).toEqual(actual);
-    });
-
-    it('should return empty array if passed empty array', () => {
-      const initial = [];
-      const expected = [];
-      const actual = service.runAlgorithm(mergeSort, initial);
-      expect(expected).toEqual(actual);
-    });
-
-    it('should return the same array if passed a sorted array', () => {
-      const initial = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(mergeSort, initial);
-      expect(expected).toEqual(actual);
-    });
-  });
-
-  describe('quicksort', () => {
-    it('should return an ordered array', () => {
-      const initial = [3, 0, 7, -1, 19, 1000, 33, 1];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(quickSort, initial);
-      expect(expected).toEqual(actual);
-    });
-
-    it('should return empty array if passed empty array', () => {
-      const initial = [];
-      const expected = [];
-      const actual = service.runAlgorithm(quickSort, initial);
-      expect(expected).toEqual(actual);
-    });
-
-    it('should return the same array if passed a sorted array', () => {
-      const initial = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(quickSort, initial);
-      expect(expected).toEqual(actual);
-    });
-  });
-
-  describe('shell sort', () => {
-    it('should return an ordered array', () => {
-      const initial = [3, 0, 7, -1, 19, 1000, 33, 1];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(shellSort, initial);
-      expect(expected).toEqual(actual);
-    });
-
-    it('should return empty array if passed empty array', () => {
-      const initial = [];
-      const expected = [];
-      const actual = service.runAlgorithm(shellSort, initial);
-      expect(expected).toEqual(actual);
-    });
-
-    it('should return the same array if passed a sorted array', () => {
-      const initial = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(shellSort, initial);
-      expect(expected).toEqual(actual);
-    });
-  });
-
-  describe('heapsort', () => {
-    it('should return an ordered array', () => {
-      const initial = [3, 0, 7, -1, 19, 1000, 33, 1];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(heapSort, initial);
-      expect(expected).toEqual(actual);
-    });
-
-    it('should return empty array if passed empty array', () => {
-      const initial = [];
-      const expected = [];
-      const actual = service.runAlgorithm(heapSort, initial);
-      expect(expected).toEqual(actual);
-    });
-
-    it('should return the same array if passed a sorted array', () => {
-      const initial = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const expected = [-1, 0, 1, 3, 7, 19, 33, 1000];
-      const actual = service.runAlgorithm(heapSort, initial);
-      expect(expected).toEqual(actual);
+      const numberOfRuns = repetitions * algorithmList.length * simulationList.length;
+      expect(spy).toHaveBeenCalledTimes(numberOfRuns);
     });
   });
 });
