@@ -35,17 +35,14 @@ export class AlgorithmRunnerService {
     simulationToRun = this.settings.simulationList,
     repetitions = this.settings.repetitions
   ) {
-    console.log(simulationToRun, algorithmsToRun);
     algorithmsToRun.forEach(algorithm => {
       simulationToRun.forEach(amount => {
         const simulationResults = [];
         for (let i = 0; i < repetitions; i++) {
           const arrayToSort = this.randomArray.slice(0, amount);
           const startTime = Date.now();
-          console.log('TCL: startTime', startTime);
           this.runAlgorithm(algorithm, arrayToSort);
           const finishTime = Date.now();
-          console.log('TCL: finishTime', finishTime);
           simulationResults.push(finishTime - startTime);
         }
         const average = simulationResults.reduce((prev, curr) => prev + curr) / simulationResults.length;
