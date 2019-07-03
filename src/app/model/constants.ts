@@ -1,6 +1,30 @@
-export const X_LABELS: number[] = [100, 250, 500, 750, 1000, 1250, 2500, 3750, 5000, 6250, 7500, 8750, 10000];
+export const RUN_SIZE: number[] = [100, 250, 500, 750, 1000, 1250, 2500, 3750, 5000, 6250, 7500, 8750, 10000];
 
-export const INITIAL_DATA: any[] = [
+/**
+ * Chart options
+ */
+export const DEFAULT_CHART_OPTIONS: any = {
+  title: {
+    text: 'Algorithm Benchmarks'
+  },
+  credits: {
+    enabled: false
+  },
+  tooltip: {
+    formatter() {
+      return 'x: ' + this.x;
+    }
+  },
+  yAxis: {
+    title: {
+      text: 'Duration (ms)'
+    }
+  }
+};
+
+import { IDataSeries } from '../model/IDataSeries';
+
+export const INITIAL_DATA: IDataSeries[] = [
   {
     name: 'Python Native TimSort',
     data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.475, 0.449, 1.677, 0.633, 0.713, 2.21, 4.121, 3.947]

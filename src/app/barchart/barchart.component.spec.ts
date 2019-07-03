@@ -8,9 +8,8 @@ describe('BarchartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BarchartComponent ]
-    })
-    .compileComponents();
+      declarations: [BarchartComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +20,11 @@ describe('BarchartComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create a chart element', () => {
+    const chartElement = fixture.nativeElement.querySelector('#container');
+    fixture.detectChanges();
+    expect(chartElement).toBeTruthy();
   });
 });

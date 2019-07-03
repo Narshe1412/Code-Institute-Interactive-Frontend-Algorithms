@@ -1,6 +1,9 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { INITIAL_DATA, X_LABELS } from '../data/sorting';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import * as Highcharts from 'highcharts';
+import { RUN_SIZE, DEFAULT_CHART_OPTIONS } from '../model/constants';
+import { DataStoreService } from '../services/data-store.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 declare var require: any;
 const Boost = require('highcharts/modules/boost');
@@ -17,53 +20,38 @@ noData(Highcharts);
   templateUrl: './barchart.component.html',
   styleUrls: ['./barchart.component.scss']
 })
-export class BarchartComponent implements OnInit, AfterViewInit {
-  /**
-   * Holds the data for the current state of the application
-   */
-  private data: any;
-  /**
-   * Chart options
-   */
-  private chartOptions: any = {
-    title: {
-      text: 'Algorithm Benchmarks'
-    },
-    credits: {
-      enabled: false
-    },
-    tooltip: {
-      formatter() {
-        return 'x: ' + this.x;
-      }
-    },
-    yAxis: {
-      title: {
-        text: 'Duration (ms)'
-      }
-    }
-  };
+export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
+  private onDestroy$ = new Subject();
+  private X_LABELS: number[];
 
-  constructor() {}
+  constructor(private dataStore: DataStoreService) {}
 
   ngOnInit() {
-    this.data = INITIAL_DATA;
+    this.X_LABELS = RUN_SIZE;
   }
 
   ngAfterViewInit() {
-    this.createChart();
+    this.dataStore.data$.pipe(takeUntil(this.onDestroy$)).subscribe(data => {
+      if (data && data.length > 0) {
+        this.createChart(data);
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.onDestroy$.next();
   }
 
   /**
    * Creates the chart on the HTML canvas with id container
    */
-  private createChart() {
+  private createChart(dataSeries) {
     Highcharts.chart('container', {
-      ...this.chartOptions,
+      ...DEFAULT_CHART_OPTIONS,
       xAxis: {
-        categories: X_LABELS
+        categories: this.X_LABELS
       },
-      series: this.data
+      series: dataSeries
     });
   }
 }
