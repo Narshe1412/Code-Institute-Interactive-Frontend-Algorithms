@@ -1,4 +1,3 @@
-import { IDataSeries } from '../model/IDataSeries';
 import { bubbleSort } from '../services/algorithm-implementations/bubble-sort';
 import { heapSort } from '../services/algorithm-implementations/heap-sort';
 import { insertionSort } from '../services/algorithm-implementations/insertion-sort';
@@ -10,11 +9,13 @@ import { selectionSort } from '../services/algorithm-implementations/selection-s
 import { shellSort } from '../services/algorithm-implementations/shell-sort';
 import { timsort } from '../services/algorithm-implementations/timsort';
 import { jsSort } from '../services/algorithm-implementations/js-sort';
+import { IAlgorithmDefinition } from './IAlgorithmDefinition';
+import { IDataSeries } from './IDataSeries';
 
 export const RUN_SIZE: number[] = [100, 250, 500, 750, 1000, 1250, 2500, 3750, 5000, 6250, 7500, 8750, 10000];
 export const DEFAULT_REPETITIONS = 3;
 
-export const ALGORITHM_LIST = [
+export const ALGORITHM_LIST: IAlgorithmDefinition[] = [
   {
     name: 'Bubble Sort',
     description: 'Bubbles a sorting',

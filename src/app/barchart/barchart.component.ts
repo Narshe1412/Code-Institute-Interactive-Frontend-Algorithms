@@ -4,6 +4,7 @@ import { RUN_SIZE, DEFAULT_CHART_OPTIONS } from '../model/constants';
 import { DataStoreService } from '../services/data-store.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AlgorithmRunnerService } from '../services/algorithm-runner.service';
 
 declare var require: any;
 const Boost = require('highcharts/modules/boost');
@@ -24,7 +25,7 @@ export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
   private onDestroy$ = new Subject();
   private X_LABELS: number[];
 
-  constructor(private dataStore: DataStoreService) {}
+  constructor(private dataStore: DataStoreService, private runner: AlgorithmRunnerService) {}
 
   ngOnInit() {
     this.X_LABELS = RUN_SIZE;
@@ -53,5 +54,9 @@ export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
       },
       series: dataSeries
     });
+  }
+
+  public runBenchmark() {
+    this.runner.runBenchmark();
   }
 }

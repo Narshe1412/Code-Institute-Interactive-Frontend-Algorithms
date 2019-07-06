@@ -12,6 +12,7 @@ import { introsort } from './algorithm-implementations/introsort';
 import { timsort } from './algorithm-implementations/timsort';
 import { radixSort } from './algorithm-implementations/radix-sort';
 import { jsSort } from './algorithm-implementations/js-sort';
+import { IAlgorithmDefinition } from '../model/IAlgorithmDefinition';
 
 describe('AlgorithmRunnerService', () => {
   let service: AlgorithmRunnerService;
@@ -60,13 +61,16 @@ describe('AlgorithmRunnerService', () => {
   describe('algorithm runner', () => {
     it('should run the correct amount of times', () => {
       const spy = spyOn(service, 'runAlgorithm').and.callThrough();
-      const algorithmList = [bubbleSort, jsSort];
-      const repetitions = 4;
-      const simulationList = [10, 100, 10000];
+      const mockAlgorithmList: IAlgorithmDefinition[] = [
+        { name: '', description: '', fn: bubbleSort },
+        { name: '', description: '', fn: jsSort }
+      ];
+      const mockRepetitions = 4;
+      const mockSimulationList = [10, 100, 10000];
 
-      service.runBenchmark(algorithmList, simulationList, repetitions);
+      service.runBenchmark(mockAlgorithmList, mockSimulationList, mockRepetitions);
 
-      const numberOfRuns = repetitions * algorithmList.length * simulationList.length;
+      const numberOfRuns = mockRepetitions * mockAlgorithmList.length * mockSimulationList.length;
       expect(spy).toHaveBeenCalledTimes(numberOfRuns);
     });
   });

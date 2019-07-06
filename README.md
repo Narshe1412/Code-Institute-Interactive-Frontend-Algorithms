@@ -1,6 +1,6 @@
 # Algorithm Benchmarks
 
-[![Build Status](https://travis-ci.com/Narshe1412/Code-Institute-User-Centric-Algorithms.svg?branch=master)](https://travis-ci.com/Narshe1412/Code-Institute-User-Centric-Algorithms)
+[![Build Status](https://travis-ci.com/Narshe1412/Code-Institute-User-Centric-Algorithms.svg?branch=master)](https://travis-ci.com/Narshe1412/Code-Institute-User-Centric-Algorithms) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Narshe1412_Code-Institute-User-Centric-Algorithms&metric=alert_status)](https://sonarcloud.io/dashboard?id=Narshe1412_Code-Institute-User-Centric-Algorithms)
 
 As a programmer you need to always leverage between several possible different solutions the one that would be most efficient. One common problem is the sorting, inserting or accessing data. To solve this problem, along programming history, several algorithms have been created. This project attempts to help a fellow programmer to choose which algorithm shall be used by providing a benchmarking operationg and plotting the results in a variety of graphs.
 
