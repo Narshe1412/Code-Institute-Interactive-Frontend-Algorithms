@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
 import * as Highcharts from 'highcharts';
-import { RUN_SIZE, DEFAULT_CHART_OPTIONS } from '../model/constants';
+import { DEFAULT_RUN_SIZE_LIST, DEFAULT_CHART_OPTIONS } from '../model/constants';
 import { DataStoreService } from '../services/data-store.service';
 import { Subject } from 'rxjs';
 import { takeUntil, throttleTime } from 'rxjs/operators';
@@ -70,7 +70,7 @@ export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
       this.chart.series[0].remove(true);
     }
 
-    this.settings.algorithmList.forEach(item => {
+    this.settings.activeAlgorithmList.forEach(item => {
       this.chart.addSeries({ name: item.name, data: [], type: 'line' });
     });
     this.ngZone.runOutsideAngular(() => {

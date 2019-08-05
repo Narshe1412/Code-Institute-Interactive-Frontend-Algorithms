@@ -1,18 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-
 import { AlgorithmRunnerService } from './algorithm-runner.service';
 import { bubbleSort } from './algorithm-implementations/bubble-sort';
-import { selectionSort } from './algorithm-implementations/selection-sort';
-import { insertionSort } from './algorithm-implementations/insertion-sort';
-import { mergeSort } from './algorithm-implementations/merge-sort';
-import { quickSort } from './algorithm-implementations/quicksort';
-import { heapSort } from './algorithm-implementations/heap-sort';
-import { shellSort } from './algorithm-implementations/shell-sort';
-import { introsort } from './algorithm-implementations/introsort';
-import { timsort } from './algorithm-implementations/timsort';
-import { radixSort } from './algorithm-implementations/radix-sort';
 import { jsSort } from './algorithm-implementations/js-sort';
-import { IAlgorithmDefinition } from '../model/IAlgorithmDefinition';
+import { IAlgorithmList } from '../model/IAlgorithmList';
 
 describe('AlgorithmRunnerService', () => {
   let service: AlgorithmRunnerService;
@@ -63,9 +53,9 @@ describe('AlgorithmRunnerService', () => {
       jasmine.clock().install();
 
       const spy = spyOn(service, 'runAlgorithm').and.callThrough();
-      const mockAlgorithmList: IAlgorithmDefinition[] = [
-        { name: '', description: '', fn: bubbleSort },
-        { name: '', description: '', fn: jsSort }
+      const mockAlgorithmList: IAlgorithmList[] = [
+        { name: '', description: '', fn: bubbleSort, enabled: true },
+        { name: '', description: '', fn: jsSort, enabled: true }
       ];
       const mockRepetitions = 4;
       const mockSimulationList = [10, 100, 10000];

@@ -11,7 +11,21 @@ import { timsort } from '../services/algorithm-implementations/timsort';
 import { jsSort } from '../services/algorithm-implementations/js-sort';
 import { IAlgorithmDefinition } from './IAlgorithmDefinition';
 
-export const RUN_SIZE: number[] = [100, 250, 500, 750, 1000, 1250, 2500, 3750, 5000, 6250, 7500, 8750, 10000];
+export const DEFAULT_RUN_SIZE_LIST: number[] = [
+  100,
+  250,
+  500,
+  750,
+  1000,
+  1250,
+  2500,
+  3750,
+  5000,
+  6250,
+  7500,
+  8750,
+  10000
+];
 export const DEFAULT_REPETITIONS = 3;
 
 export const ALGORITHM_LIST: IAlgorithmDefinition[] = [
@@ -96,7 +110,7 @@ export const DEFAULT_CHART_OPTIONS: any = {
     title: {
       text: 'Collection size',
       type: 'string',
-      categories: RUN_SIZE.map(x => x.toString())
+      categories: DEFAULT_RUN_SIZE_LIST.map(x => x.toString())
     }
   }
 };

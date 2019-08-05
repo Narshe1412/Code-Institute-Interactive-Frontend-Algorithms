@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { DataStoreService } from './data-store.service';
-import { RUN_SIZE } from '../model/constants';
+import { DEFAULT_RUN_SIZE_LIST } from '../model/constants';
 import { SettingsService } from './settings.service';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class AlgorithmRunnerService {
   private bestCaseArray: number[];
   private worstCaseArray: number[];
   private randomArray: number[];
-  private MAX_SIZE: number = RUN_SIZE[RUN_SIZE.length - 1];
+  private MAX_SIZE: number = DEFAULT_RUN_SIZE_LIST[DEFAULT_RUN_SIZE_LIST.length - 1];
 
   constructor(private store: DataStoreService, private settings: SettingsService, private ngZone: NgZone) {
     this.generateDefaultArrays();
@@ -31,7 +31,7 @@ export class AlgorithmRunnerService {
   }
 
   runBenchmark(
-    algorithmsToRun = this.settings.algorithmList,
+    algorithmsToRun = this.settings.activeAlgorithmList,
     simulationToRun = this.settings.simulationList,
     repetitions = this.settings.repetitions
   ) {
