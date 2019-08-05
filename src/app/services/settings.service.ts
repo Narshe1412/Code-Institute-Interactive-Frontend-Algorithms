@@ -54,11 +54,6 @@ export class SettingsService {
   }
 
   public addSimulationAmount(amount: number) {
-    console.log(
-      'TCL: SettingsService -> addSimulationAmount -> this.simulationList.includes(amount)',
-      this.simulationList.includes(amount),
-      this.simulationList
-    );
     if (!this.simulationList.includes(amount) && amount > 0) {
       this.simulationList.push(amount);
     }
