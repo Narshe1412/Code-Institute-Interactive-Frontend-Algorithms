@@ -1,4 +1,4 @@
 export interface IDataSeries {
   name: string;
-  data: number[];
+  data: Array<Array<number>>;
 }

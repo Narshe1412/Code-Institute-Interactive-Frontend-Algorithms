@@ -60,6 +60,8 @@ describe('AlgorithmRunnerService', () => {
 
   describe('algorithm runner', () => {
     it('should run the correct amount of times', () => {
+      jasmine.clock().install();
+
       const spy = spyOn(service, 'runAlgorithm').and.callThrough();
       const mockAlgorithmList: IAlgorithmDefinition[] = [
         { name: '', description: '', fn: bubbleSort },
@@ -67,11 +69,14 @@ describe('AlgorithmRunnerService', () => {
       ];
       const mockRepetitions = 4;
       const mockSimulationList = [10, 100, 10000];
+      const numberOfRuns = mockRepetitions * mockAlgorithmList.length * mockSimulationList.length;
 
       service.runBenchmark(mockAlgorithmList, mockSimulationList, mockRepetitions);
 
-      const numberOfRuns = mockRepetitions * mockAlgorithmList.length * mockSimulationList.length;
+      jasmine.clock().tick(10000);
       expect(spy).toHaveBeenCalledTimes(numberOfRuns);
+
+      jasmine.clock().uninstall();
     });
   });
 });

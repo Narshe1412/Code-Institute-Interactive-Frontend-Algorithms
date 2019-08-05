@@ -10,7 +10,6 @@ import { shellSort } from '../services/algorithm-implementations/shell-sort';
 import { timsort } from '../services/algorithm-implementations/timsort';
 import { jsSort } from '../services/algorithm-implementations/js-sort';
 import { IAlgorithmDefinition } from './IAlgorithmDefinition';
-import { IDataSeries } from './IDataSeries';
 
 export const RUN_SIZE: number[] = [100, 250, 500, 750, 1000, 1250, 2500, 3750, 5000, 6250, 7500, 8750, 10000];
 export const DEFAULT_REPETITIONS = 3;
@@ -92,10 +91,17 @@ export const DEFAULT_CHART_OPTIONS: any = {
     title: {
       text: 'Duration (ms)'
     }
+  },
+  xAxis: {
+    title: {
+      text: 'Collection size',
+      type: 'string',
+      categories: RUN_SIZE.map(x => x.toString())
+    }
   }
 };
 
-export const INITIAL_DATA: IDataSeries[] = [
+export const INITIAL_DATA = [
   {
     name: 'Python Native TimSort',
     data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.475, 0.449, 1.677, 0.633, 0.713, 2.21, 4.121, 3.947]

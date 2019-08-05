@@ -1,10 +1,11 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { RUN_SIZE, DEFAULT_CHART_OPTIONS } from '../model/constants';
 import { DataStoreService } from '../services/data-store.service';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, throttleTime } from 'rxjs/operators';
 import { AlgorithmRunnerService } from '../services/algorithm-runner.service';
+import { SettingsService } from '../services/settings.service';
 
 declare var require: any;
 const Boost = require('highcharts/modules/boost');
@@ -23,18 +24,28 @@ noData(Highcharts);
 })
 export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
   private onDestroy$ = new Subject();
-  private X_LABELS: number[];
+  private chart: Highcharts.Chart;
+  private chartOptions = {
+    ...DEFAULT_CHART_OPTIONS
+  };
 
-  constructor(private dataStore: DataStoreService, private runner: AlgorithmRunnerService) {}
+  constructor(
+    private dataStore: DataStoreService,
+    private settings: SettingsService,
+    private runner: AlgorithmRunnerService,
+    private ngZone: NgZone
+  ) {}
 
-  ngOnInit() {
-    this.X_LABELS = RUN_SIZE;
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
     this.dataStore.data$.pipe(takeUntil(this.onDestroy$)).subscribe(data => {
       if (data && data.length > 0) {
-        this.createChart(data);
+        if (this.chart) {
+          this.chart.update({ ...this.chartOptions, series: JSON.parse(JSON.stringify(data)) });
+        } else {
+          this.createChart(data);
+        }
       }
     });
   }
@@ -47,16 +58,23 @@ export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
    * Creates the chart on the HTML canvas with id container
    */
   private createChart(dataSeries) {
-    Highcharts.chart('container', {
-      ...DEFAULT_CHART_OPTIONS,
-      xAxis: {
-        categories: this.X_LABELS
-      },
+    this.chart = Highcharts.chart('container', {
+      ...this.chartOptions,
+      // series: []
       series: dataSeries
     });
   }
 
   public runBenchmark() {
-    this.runner.runBenchmark();
+    while (this.chart.series.length > 0) {
+      this.chart.series[0].remove(true);
+    }
+
+    this.settings.algorithmList.forEach(item => {
+      this.chart.addSeries({ name: item.name, data: [], type: 'line' });
+    });
+    this.ngZone.runOutsideAngular(() => {
+      this.runner.runBenchmark();
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { DataStoreService } from './data-store.service';
 import { RUN_SIZE } from '../model/constants';
 import { SettingsService } from './settings.service';
@@ -12,7 +12,7 @@ export class AlgorithmRunnerService {
   private randomArray: number[];
   private MAX_SIZE: number = RUN_SIZE[RUN_SIZE.length - 1];
 
-  constructor(private store: DataStoreService, private settings: SettingsService) {
+  constructor(private store: DataStoreService, private settings: SettingsService, private ngZone: NgZone) {
     this.generateDefaultArrays();
   }
 
@@ -35,20 +35,26 @@ export class AlgorithmRunnerService {
     simulationToRun = this.settings.simulationList,
     repetitions = this.settings.repetitions
   ) {
-    this.store.clearData();
+    this.ngZone.runOutsideAngular(() => {
+      this.store.clearData();
 
-    algorithmsToRun.forEach(algorithm => {
-      simulationToRun.forEach(amount => {
-        const simulationResults = [];
-        for (let i = 0; i < repetitions; i++) {
-          const arrayToSort = this.randomArray.slice(0, amount);
-          const startTime = Date.now();
-          this.runAlgorithm(algorithm.fn, arrayToSort);
-          const finishTime = Date.now();
-          simulationResults.push(finishTime - startTime);
-        }
-        const average = simulationResults.reduce((prev, curr) => prev + curr) / simulationResults.length;
-        this.store.addResult(algorithm.name, amount, average);
+      algorithmsToRun.forEach(algorithm => {
+        simulationToRun.forEach(amount => {
+          setTimeout(() => {
+            const simulationResults = [];
+            for (let i = 0; i < repetitions; i++) {
+              const arrayToSort = this.randomArray.slice(0, amount);
+              const startTime = Date.now();
+              this.runAlgorithm(algorithm.fn, arrayToSort);
+              const finishTime = Date.now();
+              simulationResults.push(finishTime - startTime);
+            }
+            const average = simulationResults.reduce((prev, curr) => prev + curr) / simulationResults.length;
+            this.ngZone.run(() => {
+              this.store.addResult(algorithm.name, amount, average);
+            });
+          }, 1000);
+        });
       });
     });
   }
