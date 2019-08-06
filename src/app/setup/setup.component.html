@@ -46,7 +46,7 @@
           <div class="col-9 li-text-center">
             <input type="number" class="form-control" id="addAmount" aria-describedby="amtHelp" #addAmountElement />
           </div>
-          <div class="col-3 li-text-right" (click)="addAmount()"><i class="material-icons">add</i></div>
+          <div class="col-3 li-text-right" (click)="addAmount()"><i class="material-icons" aria-hidden="true">add</i></div>
         </div>
         <small id="amtHelp" class="form-text text-muted li-text-center col-9">Size of the simulation.</small>
       </li>
@@ -54,7 +54,7 @@
         <li class="list-group-item">
           <div class="row">
             <div class="col-6 li-text-center">{{ amount }}</div>
-            <div class="col-6 li-text-right" (click)="deleteAmount(amount)"><i class="material-icons">delete</i></div>
+            <div class="col-6 li-text-right" (click)="deleteAmount(amount)"><i class="material-icons" aria-hidden="true">delete</i></div>
           </div>
         </li>
       </div>
