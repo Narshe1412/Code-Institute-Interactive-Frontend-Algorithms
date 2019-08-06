@@ -36,7 +36,7 @@ export class SettingsService {
   constructor() {}
 
   public enableAlgorithm(name: string) {
-    this.algorithmList.map(definition => {
+    this.algorithmList.forEach(definition => {
       if (definition.name === name) {
         definition.enabled = true;
       }
@@ -45,7 +45,7 @@ export class SettingsService {
   }
 
   public disableAlgorithm(name: string) {
-    this.algorithmList.map(definition => {
+    this.algorithmList.forEach(definition => {
       if (definition.name === name) {
         definition.enabled = false;
       }
