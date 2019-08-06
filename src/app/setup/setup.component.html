@@ -1,3 +1,63 @@
-<p>
-  setup works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <form action="">
+          <div class="form-check" *ngFor="let definition of algorithmList">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              checked="{{ definition.enabled }}"
+              id="{{ definition.name }}"
+              (change)="onCheckboxToggle(definition)"
+            />
+            <label class="form-check-label" for="{{ definition.name }}">
+              {{ definition.name }}
+            </label>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="row">
+        <div class="form-group">
+          <label for="repetitionsNo">Repetitions for each algorithm</label>
+          <input
+            type="number"
+            class="form-control"
+            id="repetitionsNo"
+            aria-describedby="repHelp"
+            [value]="repetitions"
+            (input)="onRepetitionsChange($event)"
+          />
+          <small id="repHelp" class="form-text text-muted"
+            >The amount of repetitions for algorithm. A bigger number increases accuracy but increases the processing
+            time. Minimum = 1.</small
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <ul class="list-group justify-content-center d-flex col-6">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-9 li-text-center">
+            <input type="number" class="form-control" id="addAmount" aria-describedby="amtHelp" #addAmountElement />
+          </div>
+          <div class="col-3 li-text-right" (click)="addAmount()"><i class="material-icons">add</i></div>
+        </div>
+        <small id="amtHelp" class="form-text text-muted li-text-center col-9">Size of the simulation.</small>
+      </li>
+      <div *ngFor="let amount of simulationList">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-6 li-text-center">{{ amount }}</div>
+            <div class="col-6 li-text-right" (click)="deleteAmount(amount)"><i class="material-icons">delete</i></div>
+          </div>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>

@@ -56,6 +56,7 @@ export class SettingsService {
   public addSimulationAmount(amount: number) {
     if (!this.simulationList.includes(amount) && amount > 0) {
       this.simulationList.push(amount);
+      this.simulationList.sort((a, b) => a - b);
     }
   }
 
