@@ -1,9 +1,9 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
 import * as Highcharts from 'highcharts';
-import { DEFAULT_RUN_SIZE_LIST, DEFAULT_CHART_OPTIONS } from '../model/constants';
+import { DEFAULT_CHART_OPTIONS } from '../model/constants';
 import { DataStoreService } from '../services/data-store.service';
 import { Subject } from 'rxjs';
-import { takeUntil, throttleTime } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { AlgorithmRunnerService } from '../services/algorithm-runner.service';
 import { SettingsService } from '../services/settings.service';
 
