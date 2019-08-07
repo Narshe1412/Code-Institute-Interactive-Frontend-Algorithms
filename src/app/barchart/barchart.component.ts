@@ -1,6 +1,11 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { INITIAL_DATA, X_LABELS } from '../data/sorting';
+import { Component, OnInit, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
 import * as Highcharts from 'highcharts';
+import { DEFAULT_RUN_SIZE_LIST, DEFAULT_CHART_OPTIONS } from '../model/constants';
+import { DataStoreService } from '../services/data-store.service';
+import { Subject } from 'rxjs';
+import { takeUntil, throttleTime } from 'rxjs/operators';
+import { AlgorithmRunnerService } from '../services/algorithm-runner.service';
+import { SettingsService } from '../services/settings.service';
 
 declare var require: any;
 const Boost = require('highcharts/modules/boost');
@@ -17,53 +22,59 @@ noData(Highcharts);
   templateUrl: './barchart.component.html',
   styleUrls: ['./barchart.component.scss']
 })
-export class BarchartComponent implements OnInit, AfterViewInit {
-  /**
-   * Holds the data for the current state of the application
-   */
-  private data: any;
-  /**
-   * Chart options
-   */
-  private chartOptions: any = {
-    title: {
-      text: 'Algorithm Benchmarks'
-    },
-    credits: {
-      enabled: false
-    },
-    tooltip: {
-      formatter() {
-        return 'x: ' + this.x;
-      }
-    },
-    yAxis: {
-      title: {
-        text: 'Duration (ms)'
-      }
-    }
+export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
+  private onDestroy$ = new Subject();
+  private chart: Highcharts.Chart;
+  private chartOptions = {
+    ...DEFAULT_CHART_OPTIONS
   };
 
-  constructor() {}
+  constructor(
+    private dataStore: DataStoreService,
+    private settings: SettingsService,
+    private runner: AlgorithmRunnerService,
+    private ngZone: NgZone
+  ) {}
 
-  ngOnInit() {
-    this.data = INITIAL_DATA;
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
-    this.createChart();
+    this.dataStore.data$.pipe(takeUntil(this.onDestroy$)).subscribe(data => {
+      if (data && data.length > 0) {
+        if (this.chart) {
+          this.chart.update({ ...this.chartOptions, series: JSON.parse(JSON.stringify(data)) });
+        } else {
+          this.createChart(data);
+        }
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.onDestroy$.next();
   }
 
   /**
    * Creates the chart on the HTML canvas with id container
    */
-  private createChart() {
-    Highcharts.chart('container', {
+  private createChart(dataSeries) {
+    this.chart = Highcharts.chart('container', {
       ...this.chartOptions,
-      xAxis: {
-        categories: X_LABELS
-      },
-      series: this.data
+      // series: []
+      series: dataSeries
+    });
+  }
+
+  public runBenchmark() {
+    while (this.chart.series.length > 0) {
+      this.chart.series[0].remove(true);
+    }
+
+    this.settings.activeAlgorithmList.forEach(item => {
+      this.chart.addSeries({ name: item.name, data: [], type: 'line' });
+    });
+    this.ngZone.runOutsideAngular(() => {
+      this.runner.runBenchmark();
     });
   }
 }

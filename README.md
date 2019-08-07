@@ -1,6 +1,6 @@
 # Algorithm Benchmarks
 
-[![Build Status](https://travis-ci.com/Narshe1412/Code-Institute-User-Centric-Algorithms.svg?branch=master)](https://travis-ci.com/Narshe1412/Code-Institute-User-Centric-Algorithms)
+[![Build Status](https://travis-ci.com/Narshe1412/Code-Institute-User-Centric-Algorithms.svg?branch=master)](https://travis-ci.com/Narshe1412/Code-Institute-User-Centric-Algorithms) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Narshe1412_Code-Institute-User-Centric-Algorithms&metric=alert_status)](https://sonarcloud.io/dashboard?id=Narshe1412_Code-Institute-User-Centric-Algorithms)
 
 As a programmer you need to always leverage between several possible different solutions the one that would be most efficient. One common problem is the sorting, inserting or accessing data. To solve this problem, along programming history, several algorithms have been created. This project attempts to help a fellow programmer to choose which algorithm shall be used by providing a benchmarking operationg and plotting the results in a variety of graphs.
 
@@ -105,3 +105,8 @@ In addition, if it is not obvious, you should also describe how to run your code
 - https://dev.to/wangonya/sorting-algorithms-with-javascript-part-1-4aca
 - https://dev.to/wangonya/sorting-algorithms-with-javascript-part-2-3g51
 - http://bigocheatsheet.com/
+- https://www.w3resource.com/javascript-exercises/searching-and-sorting-algorithm/searching-and-sorting-algorithm-exercise-6.php
+- https://github.com/arnorhs/js-introsort
+- https://stackoverflow.com/a/52236574/5866637
+- https://github.com/LXSMNSYC/TimSort
+- https://stackoverflow.com/a/2450976/5866637
