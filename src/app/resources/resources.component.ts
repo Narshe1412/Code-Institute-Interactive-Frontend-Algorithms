@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import hljs from 'highlight.js/lib/highlight';
+import javascript from 'highlight.js/lib/languages/javascript';
 
 @Component({
   selector: 'app-resources',
@@ -6,10 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./resources.component.scss']
 })
 export class ResourcesComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    hljs.registerLanguage('javascript', javascript);
   }
-
 }
