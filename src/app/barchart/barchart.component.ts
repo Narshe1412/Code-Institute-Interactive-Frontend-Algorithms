@@ -53,7 +53,6 @@ export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.runner.benchmarkProgress$.pipe(takeUntil(this.onDestroy$)).subscribe(progress => {
       this.isRunningBenchmark = progress.total !== 0 && progress.current !== progress.total;
-      console.log(progress);
     });
   }
 
