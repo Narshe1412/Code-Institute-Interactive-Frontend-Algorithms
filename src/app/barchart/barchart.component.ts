@@ -57,12 +57,11 @@ export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
       this.isRunningBenchmark = progress.total !== 0 && progress.current !== progress.total;
     });
 
-    this.route.url.subscribe(url => {
-      console.log(url);
+    this.route.url.pipe(takeUntil(this.onDestroy$)).subscribe(url => {
       if (url[0].parameterMap.get('run')) {
         setTimeout(() => {
           this.runBenchmark();
-        }, 1000);
+        }, 500);
       }
     });
   }
