@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AlgorithmRunnerService } from '../services/algorithm-runner.service';
 import { SettingsService } from '../services/settings.service';
+import { ActivatedRoute } from '@angular/router';
 
 declare var require: any;
 const Boost = require('highcharts/modules/boost');
@@ -35,7 +36,8 @@ export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
     private dataStore: DataStoreService,
     private settings: SettingsService,
     private runner: AlgorithmRunnerService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {}
@@ -53,6 +55,15 @@ export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.runner.benchmarkProgress$.pipe(takeUntil(this.onDestroy$)).subscribe(progress => {
       this.isRunningBenchmark = progress.total !== 0 && progress.current !== progress.total;
+    });
+
+    this.route.url.subscribe(url => {
+      console.log(url);
+      if (url[0].parameterMap.get('run')) {
+        setTimeout(() => {
+          this.runBenchmark();
+        }, 1000);
+      }
     });
   }
 

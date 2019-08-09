@@ -2,28 +2,24 @@
   <a class="navbar-brand" routerLink="#">
     <img class="logo" src="./assets/icon.svg" width="30" height="30" alt="" />
   </a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLinkActive="active" routerLink="/chart"
-        >Benchmarks <span *ngIf="isActiveRoute('/chart')" class="sr-only">(current)</span></a
-      >
-      <a class="nav-item nav-link" routerLinkActive="active" routerLink="/setup"
-        >Setup <span *ngIf="isActiveRoute('/setup')" class="sr-only">(current)</span></a
-      >
-      <a class="nav-item nav-link" routerLinkActive="active" routerLink="/resources"
-        >Resources <span *ngIf="isActiveRoute('/setup')" class="sr-only">(current)</span></a
-      >
+      <a class="nav-item nav-link" routerLinkActive="active" routerLink="/chart">Benchmarks <span
+          *ngIf="isActiveRoute('/chart')" class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" routerLinkActive="active" routerLink="/setup">Setup <span
+          *ngIf="isActiveRoute('/setup')" class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" routerLinkActive="active" routerLink="/resources">Resources <span
+          *ngIf="isActiveRoute('/setup')" class="sr-only">(current)</span></a>
+
     </div>
+    <form class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-light my-2 my-sm-0 btn-faded" type="submit" (click)="runBenchmark()"
+        [disabled]="isActiveRoute('/chart')">Run
+        Benchmark</button>
+    </form>
   </div>
 </nav>

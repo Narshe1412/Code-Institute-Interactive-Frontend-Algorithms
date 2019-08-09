@@ -18,4 +18,8 @@ export class HeaderComponent implements OnInit {
   public isActiveRoute(link: string): boolean {
     return this.router.isActive(link, true);
   }
+
+  public runBenchmark() {
+    this.router.navigate(['/chart', { run: true }]);
+  }
 }
