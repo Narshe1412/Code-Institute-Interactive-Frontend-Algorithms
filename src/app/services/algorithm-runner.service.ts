@@ -2,6 +2,8 @@ import { Injectable, NgZone } from '@angular/core';
 import { DataStoreService } from './data-store.service';
 import { DEFAULT_RUN_SIZE_LIST } from '../model/constants';
 import { SettingsService } from './settings.service';
+import { BehaviorSubject } from 'rxjs';
+import { IBenchmarkProgress } from '../model/IBenchmarkProgress';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,7 @@ export class AlgorithmRunnerService {
   private worstCaseArray: number[];
   private randomArray: number[];
   private MAX_SIZE: number = DEFAULT_RUN_SIZE_LIST[DEFAULT_RUN_SIZE_LIST.length - 1];
+  public benchmarkProgress$ = new BehaviorSubject<IBenchmarkProgress>({ total: 0, current: 0 });
 
   constructor(private store: DataStoreService, private settings: SettingsService, private ngZone: NgZone) {
     this.generateDefaultArrays();
@@ -24,9 +27,7 @@ export class AlgorithmRunnerService {
   }
 
   runAlgorithm(algorithm: (pArray: number[]) => number[], arr: number[]): number[] {
-    // Update progress
     const result = algorithm(arr);
-    // Update progress
     return result;
   }
 
@@ -37,6 +38,12 @@ export class AlgorithmRunnerService {
   ) {
     this.ngZone.runOutsideAngular(() => {
       this.store.clearData();
+      const simulationsToRun = algorithmsToRun.length * simulationToRun.length;
+      let simulationsFinished = 0;
+      this.benchmarkProgress$.next({
+        current: simulationsFinished,
+        total: simulationsToRun
+      });
 
       algorithmsToRun.forEach(algorithm => {
         simulationToRun.forEach(amount => {
@@ -52,6 +59,11 @@ export class AlgorithmRunnerService {
             const average = simulationResults.reduce((prev, curr) => prev + curr) / simulationResults.length;
             this.ngZone.run(() => {
               this.store.addResult(algorithm.name, amount, average);
+              simulationsFinished++;
+              this.benchmarkProgress$.next({
+                current: simulationsFinished,
+                total: simulationsToRun
+              });
             });
           }, 1000);
         });
