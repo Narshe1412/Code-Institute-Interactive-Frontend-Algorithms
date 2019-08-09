@@ -29,6 +29,8 @@ export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
     ...DEFAULT_CHART_OPTIONS
   };
 
+  public isRunningBenchmark = false;
+
   constructor(
     private dataStore: DataStoreService,
     private settings: SettingsService,
@@ -48,6 +50,11 @@ export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       }
     });
+
+    this.runner.benchmarkProgress$.pipe(takeUntil(this.onDestroy$)).subscribe(progress => {
+      this.isRunningBenchmark = progress.total !== 0 && progress.current !== progress.total;
+      console.log(progress);
+    });
   }
 
   ngOnDestroy() {
@@ -58,9 +65,8 @@ export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
    * Creates the chart on the HTML canvas with id container
    */
   private createChart(dataSeries) {
-    this.chart = Highcharts.chart('container', {
+    this.chart = Highcharts.chart('chart-container', {
       ...this.chartOptions,
-      // series: []
       series: dataSeries
     });
   }

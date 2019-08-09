@@ -1,3 +1,19 @@
-<div id="container"></div>
-
-<button (click)="runBenchmark()">Test run</button>
+<div class="container-fluid">
+  <div id="chart-container"></div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <button class="btn btn-primary text-center" (click)="runBenchmark()">
+        Run Benchmark
+        <span
+          *ngIf="isRunningBenchmark"
+          class="spinner-border spinner-border-sm"
+          role="status"
+          aria-hidden="true"
+        ></span>
+        <span *ngIf="isRunningBenchmark" class="sr-only">Loading...</span>
+      </button>
+    </div>
+  </div>
+</div>
