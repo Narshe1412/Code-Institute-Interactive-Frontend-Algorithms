@@ -1,5 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
+import { RouterTestingModule } from '@angular/router/testing';
 import { BarchartComponent } from './barchart.component';
 
 describe('BarchartComponent', () => {
@@ -8,6 +9,7 @@ describe('BarchartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [BarchartComponent]
     }).compileComponents();
   }));
@@ -23,7 +25,7 @@ describe('BarchartComponent', () => {
   });
 
   it('should create a chart element', () => {
-    const chartElement = fixture.nativeElement.querySelector('#container');
+    const chartElement = fixture.nativeElement.querySelector('#chart-container');
     fixture.detectChanges();
     expect(chartElement).toBeTruthy();
   });

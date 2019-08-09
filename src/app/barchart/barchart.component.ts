@@ -1,11 +1,12 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, NgZone } from '@angular/core';
 import * as Highcharts from 'highcharts';
-import { DEFAULT_RUN_SIZE_LIST, DEFAULT_CHART_OPTIONS } from '../model/constants';
+import { DEFAULT_CHART_OPTIONS } from '../model/constants';
 import { DataStoreService } from '../services/data-store.service';
 import { Subject } from 'rxjs';
-import { takeUntil, throttleTime } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { AlgorithmRunnerService } from '../services/algorithm-runner.service';
 import { SettingsService } from '../services/settings.service';
+import { ActivatedRoute } from '@angular/router';
 
 declare var require: any;
 const Boost = require('highcharts/modules/boost');
@@ -29,11 +30,14 @@ export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
     ...DEFAULT_CHART_OPTIONS
   };
 
+  public isRunningBenchmark = false;
+
   constructor(
     private dataStore: DataStoreService,
     private settings: SettingsService,
     private runner: AlgorithmRunnerService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {}
@@ -48,6 +52,18 @@ export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       }
     });
+
+    this.runner.benchmarkProgress$.pipe(takeUntil(this.onDestroy$)).subscribe(progress => {
+      this.isRunningBenchmark = progress.total !== 0 && progress.current !== progress.total;
+    });
+
+    this.route.url.pipe(takeUntil(this.onDestroy$)).subscribe(url => {
+      if (url[0].parameterMap.get('run')) {
+        setTimeout(() => {
+          this.runBenchmark();
+        }, 500);
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -58,9 +74,8 @@ export class BarchartComponent implements OnInit, AfterViewInit, OnDestroy {
    * Creates the chart on the HTML canvas with id container
    */
   private createChart(dataSeries) {
-    this.chart = Highcharts.chart('container', {
+    this.chart = Highcharts.chart('chart-container', {
       ...this.chartOptions,
-      // series: []
       series: dataSeries
     });
   }
