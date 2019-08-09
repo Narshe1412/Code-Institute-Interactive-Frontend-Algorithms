@@ -23,7 +23,7 @@ describe('BarchartComponent', () => {
   });
 
   it('should create a chart element', () => {
-    const chartElement = fixture.nativeElement.querySelector('#container');
+    const chartElement = fixture.nativeElement.querySelector('#chart-container');
     fixture.detectChanges();
     expect(chartElement).toBeTruthy();
   });
