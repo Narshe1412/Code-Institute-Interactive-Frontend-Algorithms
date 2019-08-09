@@ -1,6 +1,10 @@
 .container {
   margin-top: 15px;
   margin-bottom: 15px;
+
+  > div {
+    padding: 0px 12px;
+  }
 }
 
 #accordion {
