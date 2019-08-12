@@ -5,13 +5,8 @@
       <div class="form-group">
         <form action="">
           <div class="form-check" *ngFor="let definition of algorithmList">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              checked="{{ definition.enabled }}"
-              id="{{ definition.name }}"
-              (change)="onCheckboxToggle(definition)"
-            />
+            <input class="form-check-input" type="checkbox" [checked]="definition.enabled" id="{{ definition.name }}"
+              (change)="onCheckboxToggle(definition)" />
             <label class="form-check-label" for="{{ definition.name }}">
               {{ definition.name }}
             </label>
@@ -24,18 +19,11 @@
       <div class="row justify-content-center">
         <h4>Repetitions for algorithm</h4>
         <div class="form-group">
-          <input
-            type="number"
-            class="form-control"
-            id="repetitionsNo"
-            aria-describedby="repHelp"
-            [value]="repetitions"
-            (input)="onRepetitionsChange($event)"
-          />
-          <small id="repHelp" class="form-text text-muted"
-            >The amount of repetitions for algorithm. A bigger number increases accuracy but increases the processing
-            time. Minimum = 1.</small
-          >
+          <input type="number" class="form-control" id="repetitionsNo" aria-describedby="repHelp" [value]="repetitions"
+            (input)="onRepetitionsChange($event)" />
+          <small id="repHelp" class="form-text text-muted">The amount of repetitions for algorithm. A bigger number
+            increases accuracy but increases the processing
+            time. Minimum = 1.</small>
         </div>
       </div>
     </div>

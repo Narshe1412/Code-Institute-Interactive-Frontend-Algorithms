@@ -17,7 +17,7 @@ export class SetupComponent implements OnInit {
   constructor(private settings: SettingsService, private renderer: Renderer2) {
     this.repetitions = this.settings.repetitions;
     this.simulationList = this.settings.simulationList;
-    this.algorithmList = this.settings.activeAlgorithmList;
+    this.algorithmList = this.settings.algorithmList;
   }
 
   ngOnInit() {}
