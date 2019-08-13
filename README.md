@@ -91,22 +91,22 @@ In addition, if it is not obvious, you should also describe how to run your code
 
 ### Content
 
-- The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
+- The algorithm implementations in Javascript was obtained from the following articles:
+  - [JS: Interview Questions by thatJSDude](https://khan4019.github.io/front-end-Interview-Questions/sort.html)
+  - Sorting Algorithms with Javascript by Kinyanjui Wangonya
+    - <https://dev.to/wangonya/sorting-algorithms-with-javascript-part-1-4aca>
+    - <https://dev.to/wangonya/sorting-algorithms-with-javascript-part-2-3g51>
+  - [JavaScript exercises for Shell Sort by W3Resource](https://www.w3resource.com/javascript-exercises/searching-and-sorting-algorithm/searching-and-sorting-algorithm-exercise-6.php)
+  - [Radix Sort implementation by Lior Elrom (Stackoverflow)](https://stackoverflow.com/a/52236574/5866637)
+  - [Fisher-Yates shuffle algorithm posted by CoolAJ86 in Stackoverflow](https://stackoverflow.com/a/2450976/5866637)
+- I have also used the following libraries to implement Introsort and Timsort into the application:
+  - [Javascript Introsort by Arnohs](https://github.com/arnorhs/js-introsort)
+  - [TimSort implementation by LXSMNSYC](https://github.com/LXSMNSYC/TimSort)
 
 ### Media
 
-- The photos used in this site were obtained from ...
+- Home and Favicon Icons made by Good Ware from www.flaticon.com under CC 3.0 BY license
 
 ### Acknowledgements
 
-- I received inspiration for this project while assisting some students I tutor through GrindsCentre.
-
-- Algorithm Implementations: https://khan4019.github.io/front-end-Interview-Questions/sort.html
-- https://dev.to/wangonya/sorting-algorithms-with-javascript-part-1-4aca
-- https://dev.to/wangonya/sorting-algorithms-with-javascript-part-2-3g51
-- http://bigocheatsheet.com/
-- https://www.w3resource.com/javascript-exercises/searching-and-sorting-algorithm/searching-and-sorting-algorithm-exercise-6.php
-- https://github.com/arnorhs/js-introsort
-- https://stackoverflow.com/a/52236574/5866637
-- https://github.com/LXSMNSYC/TimSort
-- https://stackoverflow.com/a/2450976/5866637
+- I received inspiration for this project while assisting some students I tutor through GrindsCentre and the research and resources found in [BigOCheatsheet page](http://bigocheatsheet.com/)

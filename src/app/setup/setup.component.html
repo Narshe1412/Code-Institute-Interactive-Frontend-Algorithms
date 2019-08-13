@@ -1,9 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 justify-content-center">
+
+    <!-- Setup for List of ALgorithms -->
+    <div class="col-4 justify-content-center">
       <h4>List of Algorithms</h4>
       <div class="form-group">
         <form action="">
+          <!-- Dynamically creates the list of algorithms from definition and its status -->
           <div class="form-check" *ngFor="let definition of algorithmList">
             <input class="form-check-input" type="checkbox" [checked]="definition.enabled" id="{{ definition.name }}"
               (change)="onCheckboxToggle(definition)" />
@@ -15,7 +18,8 @@
       </div>
     </div>
 
-    <div class="col-6">
+    <!-- Setup for amount of repetitions -->
+    <div class="col-4">
       <div class="row justify-content-center">
         <h4>Repetitions for algorithm</h4>
         <div class="form-group">
@@ -27,31 +31,35 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row justify-content-center">
-    <ul class="list-group justify-content-center d-flex col-6">
-      <li class="list-group-item">
-        <div class="row justify-content-center">
-          <h4>Collection size</h4>
-          <div class="col-9 li-text-center">
-            <input type="number" class="form-control" id="addAmount" aria-describedby="amtHelp" #addAmountElement />
-          </div>
-          <div class="col-3 li-text-right" (click)="addAmount()">
-            <i class="material-icons" aria-hidden="true">add</i>
-          </div>
-        </div>
-        <small id="amtHelp" class="form-text text-muted li-text-center col-9">Size of the simulation.</small>
-      </li>
-      <div *ngFor="let amount of simulationList">
+
+    <!-- Setup for the size of simulations -->
+    <div class="col-4 justify-content-center">
+      <ul class="list-group justify-content-center d-flex col-6">
+        <!-- First element of the list is a form input to create new simulations -->
         <li class="list-group-item">
-          <div class="row">
-            <div class="col-6 li-text-center">{{ amount }}</div>
-            <div class="col-6 li-text-right" (click)="deleteAmount(amount)">
-              <i class="material-icons" aria-hidden="true">delete</i>
+          <div class="row justify-content-center">
+            <h4>Collection size</h4>
+            <div class="col-9 li-text-center">
+              <input type="number" class="form-control" id="addAmount" aria-describedby="amtHelp" #addAmountElement />
+            </div>
+            <div class="col-3 li-text-right" (click)="addAmount()">
+              <i class="material-icons" aria-hidden="true">add</i>
             </div>
           </div>
+          <small id="amtHelp" class="form-text text-muted li-text-center col-9">Size of the simulation.</small>
         </li>
-      </div>
-    </ul>
+        <!-- Rest of the list is created dynamically using the list of simulations -->
+        <div *ngFor="let amount of simulationList">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-6 li-text-center">{{ amount }}</div>
+              <div class="col-6 li-text-right" (click)="deleteAmount(amount)">
+                <i class="material-icons" aria-hidden="true">delete</i>
+              </div>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
   </div>
 </div>

@@ -31,57 +31,59 @@ export const DEFAULT_REPETITIONS = 3;
 export const ALGORITHM_LIST: IAlgorithmDefinition[] = [
   {
     name: 'Bubble Sort',
-    description: 'Bubbles a sorting',
+    description: `https://en.wikipedia.org/wiki/Bubble_sort`,
     fn: bubbleSort
   },
   {
-    name: 'Heap Sort',
-    description: 'heapify a sorting',
+    name: 'Heapsort',
+    description: 'https://en.wikipedia.org/wiki/Heapsort',
     fn: heapSort
   },
   {
     name: 'Insertion Sort',
-    description: 'Insert all the things in a sorting',
+    description: 'https://en.wikipedia.org/wiki/Insertion_sort',
     fn: insertionSort
   },
   {
     name: 'Introsort',
-    description: 'not sure what this does',
+    description: 'https://en.wikipedia.org/wiki/Introsort',
     fn: introsort
   },
   {
     name: 'Merge Sort',
-    description: 'Merges a sorting',
+    description: 'https://en.wikipedia.org/wiki/Merge_sort',
     fn: mergeSort
   },
   {
-    name: 'Quick Sort',
-    description: 'This supposed to be quick',
+    name: 'Quicksort',
+    description: 'https://en.wikipedia.org/wiki/Quicksort',
     fn: quickSort
   },
   {
     name: 'Radix Sort',
-    description: 'Nothing to do with botany',
+    description: 'https://en.wikipedia.org/wiki/Radix_sort',
     fn: radixSort
   },
   {
     name: 'Selection Sort',
-    description: 'Selects a sorting',
+    description: `https://en.wikipedia.org/wiki/Selection_sort`,
     fn: selectionSort
   },
   {
-    name: 'Shell Sort',
-    description: 'Heroes in a hard shell, turtle power',
+    name: 'Shellsort',
+    description: 'https://en.wikipedia.org/wiki/Shellsort',
     fn: shellSort
   },
   {
-    name: 'Tim Sort',
-    description: 'TIMMEH!',
+    name: 'TimSort',
+    description: 'https://en.wikipedia.org/wiki/Timsort',
     fn: timsort
   },
   {
-    name: 'Javascript Sort',
-    description: 'The default sort from javascript',
+    name: 'Javascript Native TimSort',
+    // tslint:disable-next-line:max-line-length
+    description:
+      'The default sort from javascript: more efficient implementation of TimSort https://github.com/v8/v8/blob/78f2610345fdd14ca401d920c140f8f461b631d1/third_party/v8/builtins/array-sort.tq#L5',
     fn: jsSort
   }
 ];
