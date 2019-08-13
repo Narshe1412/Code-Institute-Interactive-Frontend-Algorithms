@@ -77,15 +77,21 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Deployment
 
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
+This project was created using the Angular CLI which implements webpack under the hood to bundle all the files and create several JS files that contain the whole project structure.
 
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
+I used TravisCI to automate the deployment process. On each push and pull request, Travis will create a container where it will do a fresh deployment of my app, run all the tests, create a production build and deploy it to the gh-pages branch. This is all configured on the file `.travis.yml`.
 
-- Different values for environment variables (Heroku Config Vars)?
-- Different configuration files?
-- Separate git branch?
+As no environment variables are needed there's no need to host this project in a SaaS provider like Heroku.
 
-In addition, if it is not obvious, you should also describe how to run your code locally.
+### Local Deployment
+
+In order to run your project locally, assuming you have the latest version of Node or NPM just do:
+`npm install`
+`npm start`
+This will run the project in **development mode**. To get a production build after `npm install` run:
+`npm run build`
+
+Further configuration can be done in terms of building and deploying. See the [Angular Documentation](https://angular.io/) for more details.
 
 ## Credits
 

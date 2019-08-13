@@ -1,10 +1,10 @@
 {
   "name": "code-institute-user-centric-algorithms",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
     "coverage": "ng test --no-watch --code-coverage",
     "lint": "ng lint",
