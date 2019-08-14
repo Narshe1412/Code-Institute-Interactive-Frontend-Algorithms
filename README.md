@@ -65,31 +65,78 @@ Click on the badges at the top of this file to check the build status and qualit
 
 ## Testing
 
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
+The services and algoritms implementations have been automated and can be run by following the instructions below. The UI interaction is not automated, please follow the Test Cases described in the appropriate section.
 
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
+### Running automated unit tests
 
-For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
+Run `npm run test` to obtain a report of the tests with the no-watch option enabled.
 
-1. Contact form:
-   1. Go to the "Contact Us" page
-   2. Try to submit the empty form and verify that an error message about the required fields appears
-   3. Try to submit the form with an invalid email address and verify that a relevant error message appears
-   4. Try to submit the form with all inputs valid and verify that a success message appears.
+The command `ng test` is also available just to execute the unit tests via [Karma](https://karma-runner.github.io) with the watch option enabled, useful for development purposes.
 
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
+A Code Coverage report is also available in [SonarCloud](https://sonarcloud.io/component_measures?id=Narshe1412_Code-Institute-Interactive-Frontend-Algorithms&metric=coverage&view=list)
 
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
+### Manual Test Plan
 
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
+1. Running Benchmarks:
+   1. Go to the "Benchmarks" page
+   2. Click on the "Run Benchmark" button below the graph
+   3. Verify a spinning icon appears and the previous chart gets unloaded
+   4. Verify that after a few seconds it will start populating data points
+   5. Verify that when the spinning icon stops, all data points have been drawn and made a line per algorithm out of them
+2. Run Benchmark button:
+   1. Go to the "Benchmarks" page
+   2. Try to click on the "Run Benchmark" button on the navigation bar.
+   3. Verify this button is not available on the Benchmarks page (greyed out).
+   4. Nagivate to "Setup" or "Resources"
+   5. Verify than clicking the button the steps from Test 1 execute
+3. Resetting the chart:
+   1. Go to the "Benchmarks" page
+   2. Verify that clicking the "Reset Chart" button resets the chart
+   3. Click on "Run Benchmark"
+   4. Verify that the "Reset Chart" button is not available while the simulation is executing.
+4. Benchmark configuration:
+   1. List of Algorithms:
+      1. Go to "Setup" page
+      2. Modify the list of algorithms
+      3. Click on Run Benchmark
+      4. Verify that only the marked algorithms are running by checking the chart legend and results
+   2. Collection Size:
+      1. Go to "Setup" page
+      2. Add or delete items from the collection list
+      3. Click on Run Benchmark
+      4. Verify that there's a data point per algorithm and item in the collection list drawn on the chart
+   3. List of Repetitions:
+      1. Go to "Setup" page
+      2. Modify the number of repetitions to a bigger number
+      3. Click on Run Benchmark
+      4. Verify that the simulation takes longer and the numbers are more accurate than previous runs.
+   4. Sad path testing:
+      1. Go to "Setup" page
+      2. Delete all items on the simulation list
+      3. Click on Run Benchmark
+      4. Verify that no results are displayed.
+      5. Refresh the page
+      6. Uncheck all algorithms from the list
+      7. Click on Run Benchmark
+      8. Verify no results are displayed
+      9. Refresh the page
+      10. Verify that no input below 1 can be entered in the Repetitions field
+5. Responsiveness:
+   1. Pages Resources and Home are static and fully responsive but no test case is necessary
+   2. Nagivate to any of the routes "Home", "Benchmarks", "Setup", "Resources"
+   3. Verify by using different devices or your browser sizing feature that all pages are responsive and redimension correctly for different sizes
 
-### Running unit tests
+### Browser Compatibility
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The application should be compatible with the latest versions in all browsers thanks to the use of polyfills. Due to memory limitations, the Benchmark runner may block the UI in Internet Explorer or mobile browsers.
 
-### Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+| Vendor            | Version       | Compatibility status                                                     |
+| ----------------- | ------------- | ------------------------------------------------------------------------ |
+| Google Chrome     | 76.0.3809.100 | Full                                                                     |
+| Mozilla Firefox   | 68.0          | Full                                                                     |
+| Microsoft Edge    | 42.17134.1.0  | Full                                                                     |
+| Opera             | 52.0          | Full                                                                     |
+| Internet Explorer | 11.885.17134  | Not Recommended: Blocks the UI while running big simulations. Very slow. |
 
 ## Deployment
 
