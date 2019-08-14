@@ -1,6 +1,7 @@
 # Algorithm Benchmarks
 
-[![Build Status](https://travis-ci.com/Narshe1412/Code-Institute-Interactive-Frontend-Algorithms.svg?branch=master)](https://travis-ci.com/Narshe1412/Code-Institute-Interactive-Frontend-Algorithms) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Narshe1412_Code-Institute-Interactive-Frontend-Algorithms&metric=alert_status)](https://sonarcloud.io/dashboard?id=Narshe1412_Code-Institute-Interactive-Frontend-Algorithms)
+[![Build Status](https://travis-ci.com/Narshe1412/Code-Institute-Interactive-Frontend-Algorithms.svg?branch=master)](https://travis-ci.com/Narshe1412/Code-Institute-Interactive-Frontend-Algorithms) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Narshe1412_Code-Institute-Interactive-Frontend-Algorithms&metric=alert_status)](https://sonarcloud.io/dashboard?id=Narshe1412_Code-Institute-Interactive-Frontend-Algorithms) [![Project Version](https://img.shields.io/github/package-json/v/Narshe1412/Code-Institute-Interactive-Frontend-Algorithms?color=gree)](https://github.com/Narshe1412/Code-Institute-Interactive-Frontend-Algorithms)
+[![License](https://img.shields.io/github/license/Narshe1412/Code-Institute-Interactive-Frontend-Algorithms?color=g)](https://github.com/Narshe1412/Code-Institute-Interactive-Frontend-Algorithms/blob/master/LICENSE)
 
 As a programmer you need to always leverage between several possible different solutions the one that would be most efficient. One common problem is the sorting, inserting or accessing data. To solve this problem, along programming history, several algorithms have been created. This project attempts to help a fellow programmer to choose which algorithm shall be used by providing a benchmarking operationg and plotting the results in a variety of graphs.
 
@@ -18,7 +19,6 @@ It is also expected that the website will be desktop-first, as the main audience
 
 - As a user, I want to be able to see different tables of algorithm efficiency, so I can pick the best suited to my project.
 - As a user, I want to be able to run different benchmarks for predefined algorithms, so I can be certain that the results adjust to my specific use case.
-- As a user, I would like to be able to use my very own data sets or algorithms so I can compare with the predefined ones and have a clearer picture of my options.
 
 ### Wireframes
 
@@ -39,6 +39,7 @@ Basic Wireframe Setup for Mobile view and Desktop View
 - Other type of algorithms (accessors, indexing, data structures, etc...)
 - Option to run the algorithms out of the browser using the full capabilities of the computer's processors.
 - Option to run algorithms in a VM on a cloud provider, to obtain a best-case computer setups.
+- Option to be able to use my very own data sets or algorithms.
 
 ## Technologies Used
 
@@ -59,6 +60,8 @@ Basic Wireframe Setup for Mobile view and Desktop View
 - Project organization and task management provided by [GitHub and GitHub Projects](https://github.com)
 - Continuous Integration/Development automation provided by [Travis CI](http://travis-ci.com)
 - Code quality and analysis provided by [SonarQube](https://www.sonarqube.org/) via its cloud service [SonarCloud](https://sonarcloud.io/)
+
+Click on the badges at the top of this file to check the build status and quality metrics.
 
 ## Testing
 
