@@ -1,6 +1,6 @@
 {
   "name": "algorithm-benchmarks",
-  "version": "1.0rc",
+  "version": "1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
