@@ -42,10 +42,23 @@ Basic Wireframe Setup for Mobile view and Desktop View
 
 ## Technologies Used
 
-In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
+### Libraries
 
-- This project was scaffolded by [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
+- This project was scaffolded by [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2 which installs the following technologies (among others):
+  - [rxjs](https://github.com/ReactiveX/rxjs): Introduces the concept of reactive programming and observables with the ReactiveX library.
+  - [Typescript](https://www.npmjs.com/package/typescript): Adds typing and additional constructs not present on the JavaScript language but common to other languages to increase resilience to your code.
+  - [Jasmine](https://jasmine.github.io/) and [Karma](https://www.npmjs.com/package/karma) for testing
+  - The angular cli tooling itself which provides compilation, bundling and minification of the JavaScript code, as well as support to older browsers via Polyfills.
+- [Bootstrap 4](https://getbootstrap.com/) was used for styling and providing page structure and responsiveness
+- [Highcharts](https://www.highcharts.com/) library for generating graphs and plotting data.
+- [Highlight.js](https://highlightjs.org/) library to convert preformatted text into code with syntax highlighting.
+
+### Other tools
+
+- This project has been created using [Visual Studio Code](https://code.visualstudio.com/) IDE in a [Node v.10.13](https://nodejs.org/en/) environment
 - Project organization and task management provided by [GitHub and GitHub Projects](https://github.com)
+- Continuous Integration/Development automation provided by [Travis CI](http://travis-ci.com)
+- Code quality and analysis provided by [SonarQube](https://www.sonarqube.org/) via its cloud service [SonarCloud](https://sonarcloud.io/)
 
 ## Testing
 
