@@ -1,18 +1,21 @@
-<div class="container-fluid">
+<!-- The chart container -->
+<div class="container-fluid" role="figure">
   <div id="chart-container"></div>
 </div>
+<!-- Button bar -->
 <div class="container">
   <div class="row">
     <div class="mx-auto">
+      <!-- Run Benchmark button with loading spinner -->
       <button class="btn btn-primary text-center" (click)="runBenchmark()">
         Run Benchmark
-        <span
-          *ngIf="isRunningBenchmark"
-          class="spinner-border spinner-border-sm"
-          role="status"
-          aria-hidden="true"
-        ></span>
+        <span *ngIf="isRunningBenchmark" class="spinner-border spinner-border-sm" role="status"
+          aria-hidden="true"></span>
         <span *ngIf="isRunningBenchmark" class="sr-only">Loading...</span>
+      </button>
+      <!-- Reset button -->
+      <button class="btn btn-primary text-center" (click)="resetChart()">
+        Reset Chart
       </button>
     </div>
   </div>

@@ -1,12 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <!-- Logo and Home Route -->
   <a class="navbar-brand" routerLink="#">
-    <img class="logo" src="./assets/icon.svg" width="30" height="30" alt="" />
+    <img class="logo" src="./assets/icon.svg" width="30" height="30" alt="Home" />
   </a>
+  <!-- Burguer button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <!-- Router links -->
     <div class="navbar-nav">
       <a class="nav-item nav-link" routerLinkActive="active" routerLink="/chart">Benchmarks <span
           *ngIf="isActiveRoute('/chart')" class="sr-only">(current)</span></a>
@@ -16,6 +19,7 @@
           *ngIf="isActiveRoute('/setup')" class="sr-only">(current)</span></a>
 
     </div>
+    <!-- Run Benchmark Button -->
     <form class="form-inline my-2 my-lg-0">
       <button class="btn btn-outline-light my-2 my-sm-0 btn-faded" type="submit" (click)="runBenchmark()"
         [disabled]="isActiveRoute('/chart')">Run

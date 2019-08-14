@@ -5,6 +5,9 @@ import { SetupComponent } from './setup/setup.component';
 import { HomeComponent } from './home/home.component';
 import { ResourcesComponent } from './resources/resources.component';
 
+/**
+ * Establish the routes for the Angular SPA
+ */
 const routes: Routes = [
   { path: 'chart', component: BarchartComponent },
   { path: 'setup', component: SetupComponent },

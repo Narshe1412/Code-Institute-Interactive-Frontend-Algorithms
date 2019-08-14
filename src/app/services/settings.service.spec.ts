@@ -44,7 +44,7 @@ describe('SettingsService', () => {
   describe('enableAlgorithm()', () => {
     it('should mark an existing algorithm as enabled', () => {
       // Arrange
-      const algorithmName = 'Tim Sort';
+      const algorithmName = 'TimSort';
       const expectedEndValue = true;
       service.algorithmList.find(def => def.name === algorithmName).enabled = false;
       // Act
@@ -56,7 +56,7 @@ describe('SettingsService', () => {
     });
     it('should not change an existing algorithm that is already enabled', () => {
       // Arrange
-      const algorithmName = 'Tim Sort';
+      const algorithmName = 'TimSort';
       const expectedEndValue = true;
 
       // Act
@@ -68,7 +68,7 @@ describe('SettingsService', () => {
     });
     it('should not change other algorithms', () => {
       // Arrange
-      const algorithmName = 'Tim Sort';
+      const algorithmName = 'TimSort';
       const algorithmList = service.algorithmList.filter(def => def.name !== algorithmName);
       // Act
       service.enableAlgorithm(algorithmName);
@@ -78,7 +78,7 @@ describe('SettingsService', () => {
     });
     it('should return the marked algorithm as available while still on the list', () => {
       // Arrange
-      const algorithmName = 'Tim Sort';
+      const algorithmName = 'TimSort';
       service.algorithmList.find(def => def.name === algorithmName).enabled = false;
       // Act
       service.enableAlgorithm(algorithmName);
@@ -90,7 +90,7 @@ describe('SettingsService', () => {
   describe('disableAlgorithm()', () => {
     it('should mark an existing algorithm as not enabled', () => {
       // Arrange
-      const algorithmName = 'Tim Sort';
+      const algorithmName = 'TimSort';
       const expectedEndValue = false;
       // Act
       service.disableAlgorithm(algorithmName);
@@ -101,7 +101,7 @@ describe('SettingsService', () => {
     });
     it('should not change an existing algorithm that is already disabled', () => {
       // Arrange
-      const algorithmName = 'Tim Sort';
+      const algorithmName = 'TimSort';
       const expectedEndValue = false;
       service.algorithmList.find(def => def.name === algorithmName).enabled = false;
       // Act
@@ -113,7 +113,7 @@ describe('SettingsService', () => {
     });
     it('should not change other algorithms', () => {
       // Arrange
-      const algorithmName = 'Tim Sort';
+      const algorithmName = 'TimSort';
       const algorithmList = service.algorithmList.filter(def => def.name !== algorithmName);
       // Act
       service.disableAlgorithm(algorithmName);
@@ -123,7 +123,7 @@ describe('SettingsService', () => {
     });
     it('should not return the marked algorithm as available while still on the list', () => {
       // Arrange
-      const algorithmName = 'Tim Sort';
+      const algorithmName = 'TimSort';
       // Act
       service.disableAlgorithm(algorithmName);
       // Assert

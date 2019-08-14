@@ -20,9 +20,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Code-Institute-User-Centric-Algorithms'`, () => {
+  it(`should have as title 'Algorithm Benchmarking App'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Code-Institute-User-Centric-Algorithms');
+    expect(app.title).toEqual('Algorithm Benchmarking App');
   });
 });

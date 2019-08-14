@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Websites And Other Useful Resources</h2>
-  <div class="description-table">
+  <section class="description-table" id="resources">
     <dl class="row">
       <dt class="col-sm-12 col-md-4 text-md-right text-center">
         <a href="https://www.bigocheatsheet.com/" target="_blank">Big O Cheatsheet</a>
@@ -10,9 +10,8 @@
       </dd>
 
       <dt class="col-sm-12 col-md-4 text-md-right text-center">
-        <a href="https://dev.to/wangonya/sorting-algorithms-with-javascript-part-1-4aca"
-          >Sorting Algorithms with Javascript (blog)</a
-        >
+        <a href="https://dev.to/wangonya/sorting-algorithms-with-javascript-part-1-4aca">Sorting Algorithms with
+          Javascript (blog)</a>
         <small> by Kinyanjui Wangonya</small>
       </dt>
       <dd class="col-sm-12 col-md-8 text-justify ">
@@ -20,9 +19,8 @@
       </dd>
 
       <dt class="col-sm-12 col-md-4 text-md-right text-center">
-        <a href="https://khan4019.github.io/front-end-Interview-Questions/sort.html"
-          >Sort related interview questions for intermediate JavaScript developers</a
-        >
+        <a href="https://khan4019.github.io/front-end-Interview-Questions/sort.html">Sort related interview questions
+          for intermediate JavaScript developers</a>
         <small> by That JS Dude (khan4019)</small>
       </dt>
       <dd class="col-sm-12 col-md-8 text-justify ">
@@ -31,454 +29,411 @@
       </dd>
 
       <dt class="col-sm-12 col-md-4 text-md-right text-center">
-        <a href="https://www.w3resource.com/javascript-exercises/searching-and-sorting-algorithm/"
-          >W3Resource Sorting Exercises</a
-        >
+        <a href="https://www.w3resource.com/javascript-exercises/searching-and-sorting-algorithm/">W3Resource Sorting
+          Exercises</a>
       </dt>
       <dd class="col-sm-12 col-md-8 text-justify">
         A list of training exercises to implement sorting algorithms with solutions.
       </dd>
     </dl>
-  </div>
+  </section>
 </div>
 <div class="container">
-  <h2>Algorithm Implementations</h2>
-  <div id="accordion">
-    <div class="card">
-      <div class="card-header text-white bg-dark" id="headingOne">
-        <h5 class="mb-0">
-          <button
-            class="btn btn-link text-white"
-            data-toggle="collapse"
-            data-target="#collapseOne"
-            aria-expanded="true"
-            aria-controls="collapseOne"
-          >
-            Bubble Sort
-          </button>
-        </h5>
-      </div>
+  <section id="algorithm-resources">
+    <h2>Algorithm Implementations</h2>
+    <!-- Bootstrap Accordion composed of cards
+      Each card has a button to expand and hide the card itself by pressing its title.
+      The body of the card has an Angular directive that converts the text therein into a code highligted
+      fixed-sized text using the Highlight.js library
+    -->
 
-      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-        <div class="card-body">
-          <pre><code class="javascript" appHighlight>
-            function bubbleSort(arr: number[]): number[] {{ '{' }}
-              const len = arr.length;
-              for (let i = len - 1; i >= 0; i--) {{ '{' }}
-                for (let j = 1; j <= i; j++) {{ '{' }}
-                  if (arr[j - 1] > arr[j]) {{ '{' }}
-                    const temp = arr[j - 1];
-                    arr[j - 1] = arr[j];
-                    arr[j] = temp;
+    <div id="accordion">
+      <div class="card" id="bubblesort">
+        <div class="card-header text-white bg-dark" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link text-white" data-toggle="collapse" data-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
+              Bubble Sort
+            </button>
+          </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body">
+            <pre><code class="javascript" appHighlight>
+              function bubbleSort(arr: number[]): number[] {{ '{' }}
+                const len = arr.length;
+                for (let i = len - 1; i >= 0; i--) {{ '{' }}
+                  for (let j = 1; j <= i; j++) {{ '{' }}
+                    if (arr[j - 1] > arr[j]) {{ '{' }}
+                      const temp = arr[j - 1];
+                      arr[j - 1] = arr[j];
+                      arr[j] = temp;
+                    }
                   }
                 }
-              }
-              return arr;
-            }
-            </code></pre>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header text-white bg-dark" id="headingTwo">
-        <h5 class="mb-0">
-          <button
-            class="btn btn-link text-white"
-            data-toggle="collapse"
-            data-target="#collapseTwo"
-            aria-expanded="true"
-            aria-controls="collapseTwo"
-          >
-            Heap Sort
-          </button>
-        </h5>
-      </div>
-
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-        <div class="card-body">
-          <pre><code class="javascript" appHighlight>
-            let arrayLength: number;
-
-            // Helper functions
-            function heap_root(input: number[], i: number)  {{ '{' }}
-              const left = 2 * i + 1;
-              const right = 2 * i + 2;
-              let max = i;
-
-              if (left < arrayLength && input[left] > input[max])  {{ '{' }}
-                max = left;
-              }
-
-              if (right < arrayLength && input[right] > input[max])  {{ '{' }}
-                max = right;
-              }
-
-              if (max !== i)  {{ '{' }}
-                swap(input, i, max);
-                heap_root(input, max);
-              }
-            }
-
-            function swap(input: number[], indexA: number, indexB: number)  {{ '{' }}
-              const temp = input[indexA];
-
-              input[indexA] = input[indexB];
-              input[indexB] = temp;
-            }
-
-            // Main function
-            function heapSort(input: number[]): number[] {{ '{' }}
-              arrayLength = input.length;
-
-              for (let i = Math.floor(arrayLength / 2); i >= 0; i -= 1)  {{ '{' }}
-                heap_root(input, i);
-              }
-
-              for (let i = input.length - 1; i > 0; i--)  {{ '{' }}
-                swap(input, 0, i);
-                arrayLength--;
-
-                heap_root(input, 0);
-              }
-              return input;
-            }
-            </code></pre>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header text-white bg-dark" id="headingThree">
-        <h5 class="mb-0">
-          <button
-            class="btn btn-link text-white"
-            data-toggle="collapse"
-            data-target="#collapseThree"
-            aria-expanded="true"
-            aria-controls="collapseThree"
-          >
-            Insertion Sort
-          </button>
-        </h5>
-      </div>
-
-      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-        <div class="card-body">
-          <pre><code class="javascript" appHighlight>
-            function insertionSort(arr: number[]): number[] {{ '{' }}
-            let i;
-            const len = arr.length;
-            let el;
-            let j;
-
-            for (i = 1; i < len; i++) {{ '{' }}
-              el = arr[i];
-              j = i;
-
-              while (j > 0 && arr[j - 1] > el) {{ '{' }}
-                arr[j] = arr[j - 1];
-                j--;
-              }
-              arr[j] = el;
-            }
-            return arr;
-          }
-            </code></pre>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header text-white bg-dark" id="headingFour">
-        <h5 class="mb-0">
-          <button
-            class="btn btn-link text-white"
-            data-toggle="collapse"
-            data-target="#collapseFour"
-            aria-expanded="true"
-            aria-controls="collapseFour"
-          >
-            Merge Sort
-          </button>
-        </h5>
-      </div>
-
-      <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-        <div class="card-body">
-          <pre><code class="javascript" appHighlight>
-            function mergeSort(arr: number[]): number[] {{ '{' }}
-              const len = arr.length;
-              if (len < 2) {{ '{' }}
                 return arr;
               }
-              const mid = Math.floor(len / 2);
-              const left = arr.slice(0, mid);
-              const right = arr.slice(mid);
-              // send left and right to the mergeSort to broke it down into pieces
-              // then merge those
-              return merge(mergeSort(left), mergeSort(right));
-            }
+              </code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="card" id="heapsort">
+        <div class="card-header text-white bg-dark" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-link text-white" data-toggle="collapse" data-target="#collapseTwo"
+              aria-expanded="true" aria-controls="collapseTwo">
+              Heap Sort
+            </button>
+          </h5>
+        </div>
 
-            function merge(left: number[], right: number[]): number[] {{ '{' }}
-              const result = [];
-              const lLen = left.length;
-              const rLen = right.length;
-              let l = 0;
-              let r = 0;
-              while (l < lLen && r < rLen) {{ '{' }}
-                if (left[l] < right[r]) {{ '{' }}
-                  result.push(left[l++]);
-                } else {{ '{' }}
-                  result.push(right[r++]);
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+          <div class="card-body">
+            <pre><code class="javascript" appHighlight>
+              let arrayLength: number;
+
+              // Helper functions
+              function heap_root(input: number[], i: number)  {{ '{' }}
+                const left = 2 * i + 1;
+                const right = 2 * i + 2;
+                let max = i;
+
+                if (left < arrayLength && input[left] > input[max])  {{ '{' }}
+                  max = left;
+                }
+
+                if (right < arrayLength && input[right] > input[max])  {{ '{' }}
+                  max = right;
+                }
+
+                if (max !== i)  {{ '{' }}
+                  swap(input, i, max);
+                  heap_root(input, max);
                 }
               }
-              // remaining part needs to be addred to the result
-              return result.concat(left.slice(l)).concat(right.slice(r));
-            }
 
-            </code></pre>
+              function swap(input: number[], indexA: number, indexB: number)  {{ '{' }}
+                const temp = input[indexA];
+
+                input[indexA] = input[indexB];
+                input[indexB] = temp;
+              }
+
+              // Main function
+              function heapSort(input: number[]): number[] {{ '{' }}
+                arrayLength = input.length;
+
+                for (let i = Math.floor(arrayLength / 2); i >= 0; i -= 1)  {{ '{' }}
+                  heap_root(input, i);
+                }
+
+                for (let i = input.length - 1; i > 0; i--)  {{ '{' }}
+                  swap(input, 0, i);
+                  arrayLength--;
+
+                  heap_root(input, 0);
+                }
+                return input;
+              }
+              </code></pre>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-header text-white bg-dark" id="headingFive">
-        <h5 class="mb-0">
-          <button
-            class="btn btn-link text-white"
-            data-toggle="collapse"
-            data-target="#collapseFive"
-            aria-expanded="true"
-            aria-controls="collapseFive"
-          >
-            Intro Sort
-          </button>
-        </h5>
-      </div>
-
-      <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
-        <div class="card-body">
-          <p>
-            Implementation obtained by the following library:
-          </p>
-          <p>
-            <a href="https://github.com/arnorhs/js-introsort">Introsort by Arnor HS</a>
-          </p>
+      <div class="card" id="insertionsort">
+        <div class="card-header text-white bg-dark" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link text-white" data-toggle="collapse" data-target="#collapseThree"
+              aria-expanded="true" aria-controls="collapseThree">
+              Insertion Sort
+            </button>
+          </h5>
         </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header text-white bg-dark" id="headingSix">
-        <h5 class="mb-0">
-          <button
-            class="btn btn-link text-white"
-            data-toggle="collapse"
-            data-target="#collapseSix"
-            aria-expanded="true"
-            aria-controls="collapseSix"
-          >
-            Quick Sort
-          </button>
-        </h5>
-      </div>
 
-      <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
-        <div class="card-body">
-          <pre><code class="javascript" appHighlight>
-            function quickSort(arr: number[], left?: number, right?: number): number[] {{ '{' }}
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+          <div class="card-body">
+            <pre><code class="javascript" appHighlight>
+              function insertionSort(arr: number[]): number[] {{ '{' }}
+              let i;
               const len = arr.length;
-              left = left === undefined ? 0 : left;
-              right = right === undefined ? len - 1 : right;
-              let pivot: any;
-              let partitionIndex: number;
+              let el;
+              let j;
 
-              if (left < right) {{ '{' }}
-                pivot = right;
-                partitionIndex = partition(arr, pivot, left, right);
+              for (i = 1; i < len; i++) {{ '{' }}
+                el = arr[i];
+                j = i;
 
-                // sort left and right
-                quickSort(arr, left, partitionIndex - 1);
-                quickSort(arr, partitionIndex + 1, right);
+                while (j > 0 && arr[j - 1] > el) {{ '{' }}
+                  arr[j] = arr[j - 1];
+                  j--;
+                }
+                arr[j] = el;
               }
               return arr;
             }
-
-            function partition(arr: number[], pivot: number, left: number, right: number) {{ '{' }}
-              const pivotValue = arr[pivot];
-              let partitionIndex = left;
-
-              for (let i = left; i < right; i++) {{ '{' }}
-                if (arr[i] < pivotValue) {{ '{' }}
-                  swap(arr, i, partitionIndex);
-                  partitionIndex++;
-                }
-              }
-              swap(arr, right, partitionIndex);
-              return partitionIndex;
-            }
-
-            function swap(arr: number[], i: number, j: number) {{ '{' }}
-              const temp = arr[i];
-              arr[i] = arr[j];
-              arr[j] = temp;
-            }
-            </code></pre>
+              </code></pre>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-header text-white bg-dark" id="headingSeven">
-        <h5 class="mb-0">
-          <button
-            class="btn btn-link text-white"
-            data-toggle="collapse"
-            data-target="#collapseSeven"
-            aria-expanded="true"
-            aria-controls="collapseSeven"
-          >
-            Radix Sort
-          </button>
-        </h5>
-      </div>
-
-      <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
-        <div class="card-body">
-          <pre><code class="javascript" appHighlight>
-            function radixSort(data) {{ '{' }}
-              const base = 10;
-              let divider = 1;
-              let maxVal = Number.NEGATIVE_INFINITY;
-
-              while (divider <= maxVal || divider < base) {{ '{' }}
-                const buckets = [...Array(10)].map(() => []);
-
-                for (const val of data) {{ '{' }}
-                  const positiveVal = Math.abs(val);
-                  buckets[Math.floor((positiveVal / divider) % base)].push(val);
-                  maxVal = positiveVal > maxVal ? positiveVal : maxVal;
-                }
-
-                data = [].concat.apply([], buckets);
-                divider *= base;
-              }
-              for (let i = 0; i < data.length; i++) {{ '{' }}
-                if (data[i] < 0) {{ '{' }}
-                  data.unshift(data.splice(i, 1)[0]);
-                }
-              }
-              return data;
-            }
-            </code></pre>
+      <div class="card" id="mergesort">
+        <div class="card-header text-white bg-dark" id="headingFour">
+          <h5 class="mb-0">
+            <button class="btn btn-link text-white" data-toggle="collapse" data-target="#collapseFour"
+              aria-expanded="true" aria-controls="collapseFour">
+              Merge Sort
+            </button>
+          </h5>
         </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header text-white bg-dark" id="headingEight">
-        <h5 class="mb-0">
-          <button
-            class="btn btn-link text-white"
-            data-toggle="collapse"
-            data-target="#collapseEight"
-            aria-expanded="true"
-            aria-controls="collapseEight"
-          >
-            Selection Sort
-          </button>
-        </h5>
-      </div>
 
-      <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
-        <div class="card-body">
-          <pre><code class="javascript" appHighlight>
-            function selectionSort(arr: number[]): number[] {{ '{' }}
-              let minIdx;
-              let temp;
-              const len = arr.length;
-              for (let i = 0; i < len; i++) {{ '{' }}
-                minIdx = i;
-                for (let j = i + 1; j < len; j++) {{ '{' }}
-                  if (arr[j] < arr[minIdx]) {{ '{' }}
-                    minIdx = j;
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+          <div class="card-body">
+            <pre><code class="javascript" appHighlight>
+              function mergeSort(arr: number[]): number[] {{ '{' }}
+                const len = arr.length;
+                if (len < 2) {{ '{' }}
+                  return arr;
+                }
+                const mid = Math.floor(len / 2);
+                const left = arr.slice(0, mid);
+                const right = arr.slice(mid);
+                // send left and right to the mergeSort to broke it down into pieces
+                // then merge those
+                return merge(mergeSort(left), mergeSort(right));
+              }
+
+              function merge(left: number[], right: number[]): number[] {{ '{' }}
+                const result = [];
+                const lLen = left.length;
+                const rLen = right.length;
+                let l = 0;
+                let r = 0;
+                while (l < lLen && r < rLen) {{ '{' }}
+                  if (left[l] < right[r]) {{ '{' }}
+                    result.push(left[l++]);
+                  } else {{ '{' }}
+                    result.push(right[r++]);
                   }
                 }
-                temp = arr[i];
-                arr[i] = arr[minIdx];
-                arr[minIdx] = temp;
+                // remaining part needs to be addred to the result
+                return result.concat(left.slice(l)).concat(right.slice(r));
               }
-              return arr;
-            }
-            </code></pre>
+
+              </code></pre>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-header text-white bg-dark" id="headingNine">
-        <h5 class="mb-0">
-          <button
-            class="btn btn-link text-white"
-            data-toggle="collapse"
-            data-target="#collapseNine"
-            aria-expanded="true"
-            aria-controls="collapseNine"
-          >
-            Shell Sort
-          </button>
-        </h5>
+      <div class="card" id="intorsort">
+        <div class="card-header text-white bg-dark" id="headingFive">
+          <h5 class="mb-0">
+            <button class="btn btn-link text-white" data-toggle="collapse" data-target="#collapseFive"
+              aria-expanded="true" aria-controls="collapseFive">
+              Intro Sort
+            </button>
+          </h5>
+        </div>
+
+        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+          <div class="card-body">
+            <p>
+              Implementation obtained by the following library:
+            </p>
+            <p>
+              <a href="https://github.com/arnorhs/js-introsort">Introsort by Arnor HS</a>
+            </p>
+          </div>
+        </div>
       </div>
+      <div class="card" id="quicksort">
+        <div class="card-header text-white bg-dark" id="headingSix">
+          <h5 class="mb-0">
+            <button class="btn btn-link text-white" data-toggle="collapse" data-target="#collapseSix"
+              aria-expanded="true" aria-controls="collapseSix">
+              Quick Sort
+            </button>
+          </h5>
+        </div>
 
-      <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
-        <div class="card-body">
-          <pre><code class="javascript" appHighlight>
-            function shellSort(arr) {{ '{' }}
-              let increment = arr.length / 2;
-              while (increment > 0) {{ '{' }}
-                for (let i = increment; i < arr.length; i++) {{ '{' }}
-                  let j = i;
-                  const temp = arr[i];
+        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+          <div class="card-body">
+            <pre><code class="javascript" appHighlight>
+              function quickSort(arr: number[], left?: number, right?: number): number[] {{ '{' }}
+                const len = arr.length;
+                left = left === undefined ? 0 : left;
+                right = right === undefined ? len - 1 : right;
+                let pivot: any;
+                let partitionIndex: number;
 
-                  while (j >= increment && arr[j - increment] > temp) {{ '{' }}
-                    arr[j] = arr[j - increment];
-                    j = j - increment;
+                if (left < right) {{ '{' }}
+                  pivot = right;
+                  partitionIndex = partition(arr, pivot, left, right);
+
+                  // sort left and right
+                  quickSort(arr, left, partitionIndex - 1);
+                  quickSort(arr, partitionIndex + 1, right);
+                }
+                return arr;
+              }
+
+              function partition(arr: number[], pivot: number, left: number, right: number) {{ '{' }}
+                const pivotValue = arr[pivot];
+                let partitionIndex = left;
+
+                for (let i = left; i < right; i++) {{ '{' }}
+                  if (arr[i] < pivotValue) {{ '{' }}
+                    swap(arr, i, partitionIndex);
+                    partitionIndex++;
+                  }
+                }
+                swap(arr, right, partitionIndex);
+                return partitionIndex;
+              }
+
+              function swap(arr: number[], i: number, j: number) {{ '{' }}
+                const temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+              }
+              </code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="card" id="radixsort">
+        <div class="card-header text-white bg-dark" id="headingSeven">
+          <h5 class="mb-0">
+            <button class="btn btn-link text-white" data-toggle="collapse" data-target="#collapseSeven"
+              aria-expanded="true" aria-controls="collapseSeven">
+              Radix Sort
+            </button>
+          </h5>
+        </div>
+
+        <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+          <div class="card-body">
+            <pre><code class="javascript" appHighlight>
+              function radixSort(data) {{ '{' }}
+                const base = 10;
+                let divider = 1;
+                let maxVal = Number.NEGATIVE_INFINITY;
+
+                while (divider <= maxVal || divider < base) {{ '{' }}
+                  const buckets = [...Array(10)].map(() => []);
+
+                  for (const val of data) {{ '{' }}
+                    const positiveVal = Math.abs(val);
+                    buckets[Math.floor((positiveVal / divider) % base)].push(val);
+                    maxVal = positiveVal > maxVal ? positiveVal : maxVal;
                   }
 
-                  arr[j] = temp;
+                  data = [].concat.apply([], buckets);
+                  divider *= base;
                 }
-
-                if (increment === 2) {{ '{' }}
-                  increment = 1;
-                } else {{ '{' }}
-                  increment = Math.round((increment * 5) / 11);
+                for (let i = 0; i < data.length; i++) {{ '{' }}
+                  if (data[i] < 0) {{ '{' }}
+                    data.unshift(data.splice(i, 1)[0]);
+                  }
                 }
+                return data;
               }
-              return arr;
-            }
+              </code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="card" id="selectionsort">
+        <div class="card-header text-white bg-dark" id="headingEight">
+          <h5 class="mb-0">
+            <button class="btn btn-link text-white" data-toggle="collapse" data-target="#collapseEight"
+              aria-expanded="true" aria-controls="collapseEight">
+              Selection Sort
+            </button>
+          </h5>
+        </div>
 
-            </code></pre>
+        <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
+          <div class="card-body">
+            <pre><code class="javascript" appHighlight>
+              function selectionSort(arr: number[]): number[] {{ '{' }}
+                let minIdx;
+                let temp;
+                const len = arr.length;
+                for (let i = 0; i < len; i++) {{ '{' }}
+                  minIdx = i;
+                  for (let j = i + 1; j < len; j++) {{ '{' }}
+                    if (arr[j] < arr[minIdx]) {{ '{' }}
+                      minIdx = j;
+                    }
+                  }
+                  temp = arr[i];
+                  arr[i] = arr[minIdx];
+                  arr[minIdx] = temp;
+                }
+                return arr;
+              }
+              </code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="card" id="shellsort">
+        <div class="card-header text-white bg-dark" id="headingNine">
+          <h5 class="mb-0">
+            <button class="btn btn-link text-white" data-toggle="collapse" data-target="#collapseNine"
+              aria-expanded="true" aria-controls="collapseNine">
+              Shell Sort
+            </button>
+          </h5>
+        </div>
+
+        <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
+          <div class="card-body">
+            <pre><code class="javascript" appHighlight>
+              function shellSort(arr) {{ '{' }}
+                let increment = arr.length / 2;
+                while (increment > 0) {{ '{' }}
+                  for (let i = increment; i < arr.length; i++) {{ '{' }}
+                    let j = i;
+                    const temp = arr[i];
+
+                    while (j >= increment && arr[j - increment] > temp) {{ '{' }}
+                      arr[j] = arr[j - increment];
+                      j = j - increment;
+                    }
+
+                    arr[j] = temp;
+                  }
+
+                  if (increment === 2) {{ '{' }}
+                    increment = 1;
+                  } else {{ '{' }}
+                    increment = Math.round((increment * 5) / 11);
+                  }
+                }
+                return arr;
+              }
+
+              </code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="card" id="timsort">
+        <div class="card-header text-white bg-dark" id="headingTen">
+          <h5 class="mb-0">
+            <button class="btn btn-link text-white" data-toggle="collapse" data-target="#collapseTen"
+              aria-expanded="true" aria-controls="collapseTen">
+              TimSort
+            </button>
+          </h5>
+        </div>
+
+        <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion">
+          <div class="card-body">
+            <p>
+              Implementation obtained by the following library:
+            </p>
+            <p>
+              <a href="https://github.com/LXSMNSYC/TimSort">Timsort by Alexis Munsayac</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-header text-white bg-dark" id="headingTen">
-        <h5 class="mb-0">
-          <button
-            class="btn btn-link text-white"
-            data-toggle="collapse"
-            data-target="#collapseTen"
-            aria-expanded="true"
-            aria-controls="collapseTen"
-          >
-            TimSort
-          </button>
-        </h5>
-      </div>
-
-      <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion">
-        <div class="card-body">
-          <p>
-            Implementation obtained by the following library:
-          </p>
-          <p>
-            <a href="https://github.com/LXSMNSYC/TimSort">Timsort by Alexis Munsayac</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+  </section>
 </div>
