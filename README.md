@@ -57,9 +57,11 @@ Basic Wireframe Setup for Mobile view and Desktop View
 ### Other tools
 
 - This project has been created using [Visual Studio Code](https://code.visualstudio.com/) IDE in a [Node v.10.13](https://nodejs.org/en/) environment
-- Project organization and task management provided by [GitHub and GitHub Projects](https://github.com)
+- Project organization and task management provided by [GitHub and GitHub Projects](https://github.com).
+  - All feature branchs within a sprint are squashed and merged into their respective sprint. Each sprint is Squashed and Merged into the master branch. Each Github issue and pull request still retain the history of commits against the branch or feature. Non-sprint branches are deleted after merge.
 - Continuous Integration/Development automation provided by [Travis CI](http://travis-ci.com)
 - Code quality and analysis provided by [SonarQube](https://www.sonarqube.org/) via its cloud service [SonarCloud](https://sonarcloud.io/)
+- [Snyk](https://snyk.io/) is used to analyze vulnerabilities within dependencies.
 
 Click on the badges at the top of this file to check the build status and quality metrics.
 

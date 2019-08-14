@@ -1,6 +1,6 @@
 {
-  "name": "code-institute-user-centric-algorithms",
-  "version": "1.3.0",
+  "name": "algorithm-benchmarks",
+  "version": "1.0rc",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
