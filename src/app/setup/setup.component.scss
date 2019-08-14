@@ -18,3 +18,12 @@
 .align-fix {
   padding-top: 5px;
 }
+
+.container {
+  margin-top: 1rem;
+}
+
+// establishes the same padding as list-group-item so all items are at the same level
+.setup-item {
+  padding: 0.75rem 1.25rem;
+}

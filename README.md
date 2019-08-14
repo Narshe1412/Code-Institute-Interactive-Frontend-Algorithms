@@ -77,40 +77,40 @@ A Code Coverage report is also available in [SonarCloud](https://sonarcloud.io/c
 
 ### Manual Test Plan
 
-1. Running Benchmarks:
+1. **Running Benchmarks**:
    1. Go to the "Benchmarks" page
    2. Click on the "Run Benchmark" button below the graph
    3. Verify a spinning icon appears and the previous chart gets unloaded
    4. Verify that after a few seconds it will start populating data points
    5. Verify that when the spinning icon stops, all data points have been drawn and made a line per algorithm out of them
-2. Run Benchmark button:
+2. **Run Benchmark button**:
    1. Go to the "Benchmarks" page
    2. Try to click on the "Run Benchmark" button on the navigation bar.
    3. Verify this button is not available on the Benchmarks page (greyed out).
    4. Nagivate to "Setup" or "Resources"
    5. Verify than clicking the button the steps from Test 1 execute
-3. Resetting the chart:
+3. **Resetting the chart**:
    1. Go to the "Benchmarks" page
    2. Verify that clicking the "Reset Chart" button resets the chart
    3. Click on "Run Benchmark"
    4. Verify that the "Reset Chart" button is not available while the simulation is executing.
-4. Benchmark configuration:
-   1. List of Algorithms:
+4. **Benchmark configuration**:
+   1. **List of Algorithms**:
       1. Go to "Setup" page
       2. Modify the list of algorithms
       3. Click on Run Benchmark
       4. Verify that only the marked algorithms are running by checking the chart legend and results
-   2. Collection Size:
+   2. **Collection Size**:
       1. Go to "Setup" page
       2. Add or delete items from the collection list
       3. Click on Run Benchmark
       4. Verify that there's a data point per algorithm and item in the collection list drawn on the chart
-   3. List of Repetitions:
+   3. **List of Repetitions**:
       1. Go to "Setup" page
       2. Modify the number of repetitions to a bigger number
       3. Click on Run Benchmark
       4. Verify that the simulation takes longer and the numbers are more accurate than previous runs.
-   4. Sad path testing:
+   4. **Sad path testing**:
       1. Go to "Setup" page
       2. Delete all items on the simulation list
       3. Click on Run Benchmark
@@ -121,7 +121,7 @@ A Code Coverage report is also available in [SonarCloud](https://sonarcloud.io/c
       8. Verify no results are displayed
       9. Refresh the page
       10. Verify that no input below 1 can be entered in the Repetitions field
-5. Responsiveness:
+5. **Responsiveness**:
    1. Pages Resources and Home are static and fully responsive but no test case is necessary
    2. Nagivate to any of the routes "Home", "Benchmarks", "Setup", "Resources"
    3. Verify by using different devices or your browser sizing feature that all pages are responsive and redimension correctly for different sizes
@@ -149,9 +149,13 @@ As no environment variables are needed there's no need to host this project in a
 ### Local Deployment
 
 In order to run your project locally, assuming you have the latest version of Node or NPM just do:
+
 `npm install`
+
 `npm start`
+
 This will run the project in **development mode**. To get a production build after `npm install` run:
+
 `npm run build`
 
 Further configuration can be done in terms of building and deploying. See the [Angular Documentation](https://angular.io/) for more details.
