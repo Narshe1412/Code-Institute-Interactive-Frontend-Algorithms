@@ -9,7 +9,9 @@
     "coverage": "ng test --no-watch --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "cibuild": "ng test --no-watch --code-coverage --browsers=ChromeHeadless && ng build --prod --no-progress"
+    "cibuild": "ng test --no-watch --code-coverage --browsers=ChromeHeadless && ng build --prod --no-progress",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "private": true,
   "dependencies": {
@@ -17,7 +19,7 @@
     "@angular/cdk": "^8.0.1",
     "@angular/common": "~8.2.1",
     "@angular/compiler": "~8.2.1",
-    "@angular/core": "^8.2.1",
+    "@angular/core": "^8.2.9",
     "@angular/forms": "^8.2.1",
     "@angular/platform-browser": "^8.2.1",
     "@angular/platform-browser-dynamic": "^8.2.1",
@@ -31,17 +33,18 @@
     "popper.js": "^1.15.0",
     "rxjs": "~6.5.2",
     "tslib": "^1.9.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "snyk": "^1.230.5"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.803.0-next.1",
+    "@angular-devkit/build-angular": "^0.803.8",
     "@angular/cli": "^8.3.0-next.1",
     "@angular/compiler-cli": "^8.2.1",
     "@angular/language-service": "^8.2.1",
     "@types/d3": "^5.7.2",
     "@types/jasmine": "^3.3.16",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "~8.9.4",
+    "@types/node": "~8.10.54",
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -53,6 +56,6 @@
     "protractor": "~6.0.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.6.3"
-  }
+    "typescript": "~3.6.3",
+    "snyk": true
 }
