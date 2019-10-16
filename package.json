@@ -9,7 +9,9 @@
     "coverage": "ng test --no-watch --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "cibuild": "ng test --no-watch --code-coverage --browsers=ChromeHeadless && ng build --prod --no-progress"
+    "cibuild": "ng test --no-watch --code-coverage --browsers=ChromeHeadless && ng build --prod --no-progress",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "private": true,
   "dependencies": {
@@ -31,7 +33,8 @@
     "popper.js": "^1.15.0",
     "rxjs": "~6.5.2",
     "tslib": "^1.9.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "snyk": "^1.230.5"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.803.0-next.1",
@@ -54,5 +57,6 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
-  }
+  },
+  "snyk": true
 }
