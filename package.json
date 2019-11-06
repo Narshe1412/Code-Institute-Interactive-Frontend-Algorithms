@@ -58,4 +58,5 @@
     "tslint": "~5.15.0",
     "typescript": "~3.6.3",
     "snyk": true
+  }
 }
